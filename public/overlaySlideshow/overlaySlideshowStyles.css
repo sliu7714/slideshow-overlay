@@ -1,0 +1,36 @@
+.background-slideshow{
+    position: absolute;
+    z-index: -1;
+}
+.background-container{
+    position: static;
+    max-width:100%;
+    max-height:100%;
+}
+.background-slide{
+    position: static;
+    max-width:100%;
+    max-height:100%;
+}
+
+.foreground-slideshow{
+    positon: relative;
+    z-index: 1;
+
+}
+.foreground-container{
+    position: static;
+    max-width:100%;
+    max-height:100%;
+}
+.foreground-slide{
+    position: static;
+    max-width:100%;
+    max-height:100%;
+}
+
+.forward-arrow{
+}
+.back-arrow{
+
+}

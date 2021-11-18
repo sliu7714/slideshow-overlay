@@ -2,107 +2,134 @@
 "use strict"
 
 // these svgs are from iconmonstr.com
-const forward_arrow_id = "forward_arrow"
-const back_arrow_id = "back_arrow"
-const forward_arrow = `<svg id=${forward_arrow_id} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>`
-const back_arrow = `<svg id=${back_arrow_id} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>`
+const forwardArrowHtml = `<svg class="forward-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>`
+const backArrowHtml = `<svg class="back-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>`
 
-class BackgroundSlideshow{
+class SlideShow{
     // later can add options for showing arrows(only one slide), size, etc?
-
-    constructor(id, firstBackground, containerID) {
-        // every slideshow must contain minimum one background
-        this.backgroundList = [firstBackground]
-        this.currentBackgroundIndex = 0  // index of the current background being displayed
-        this.numBackgrounds = 1
+    constructor(id, firstSlide, containerID, slideshowClassName, slideContainerClassName ) {
+        // every slideshow must contain minimum one slide
+        this.slidesList = [firstSlide]
+        this.currentSlideIndex = 0  // index of the current slide being displayed
+        this.numSlides = 1
 
         // not sure should autogenerate ids, but should at least check for uniqueness?
         this.id = id
-        this.backgroundContainerID = `bg_container_${id}`
 
-        // create background container
-        const slideShowContainerHtml =
-            `
-            <div class="background-slideshow" id=${this.id}>
-                ${back_arrow}
-                <div class="background-container" id=${this.backgroundContainerID}>
-                ${firstBackground.html}
-                </div>
-                ${forward_arrow}
-            </div>
-            `
-        // add background to container
-        $(`#${containerID}`).append(slideShowContainerHtml)
+        // create html elements
+        this.slideShowContainer = $(`<div class=${slideshowClassName} id=${this.id}>`)
+        this.slidesContainer = $(`<div className=${slideContainerClassName} > `)
+        $(this.slidesContainer).append(firstSlide.element)
+        const forwardArrow = $(forwardArrowHtml)
+        const backArrow = $(backArrowHtml)
+        $(this.slideShowContainer).append(backArrow)
+        $(this.slideShowContainer).append(this.slidesContainer)
+        $(this.slideShowContainer).append(forwardArrow)
+
+        // add element to DOM
+        $(`#${containerID}`).append(this.slideShowContainer)
+
         // add onClick events for the arrows
-        $(`#${forward_arrow_id}`).click(() => {this.nextSlide()})
-        $(`#${back_arrow_id}`).click(() => {this.prevSlide()})
+        $(forwardArrow).click(() => {this.nextSlide()})
+        $(backArrow).click(() => {this.prevSlide()})
     }
 
-    addBackground(background){
-        $(`#${this.backgroundContainerID}`).append(background.html)
-        background.hide()
-        this.backgroundList.push(background)
-        this.numBackgrounds ++
+    addSlide(slide){
+        $(this.slidesContainer).append(slide.element)
+        slide.hide()
+        this.slidesList.push(slide)
+        this.numSlides ++
     }
 
     nextSlide(){
-        let new_index = this.currentBackgroundIndex + 1
-        if (new_index >= this.numBackgrounds){
+        let new_index = this.currentSlideIndex + 1
+        if (new_index >= this.numSlides){
             // move back to first slide
             new_index = 0
         }
-        console.log('next slide index: ',new_index)
         this.changeSlide(new_index)
     }
 
     prevSlide(){
-        let new_index = this.currentBackgroundIndex - 1
+        let new_index = this.currentSlideIndex - 1
         if (new_index < 0){
             // move to last slide
-            new_index = this.numBackgrounds - 1
+            new_index = this.numSlides - 1
         }
-        console.log('next slide index: ',new_index)
         this.changeSlide(new_index)
     }
 
     changeSlide(index){
-        if (index < 0 || index > this.backgroundList.length){
-            console.log(`BackgroundSlideshow.changeSlide: background slideshow index out of bounds`)
+        if (index < 0 || index > this.slidesList.length){
+            console.log(`Slideshow.changeSlide: slideshow index out of bounds`)
             return
         }
         // hide previous slide
-        this.backgroundList[this.currentBackgroundIndex].hide()
+        this.slidesList[this.currentSlideIndex].hide()
         // show current slide
-        this.currentBackgroundIndex = index;
-        this.backgroundList[this.currentBackgroundIndex].show()
+        this.currentSlideIndex = index;
+        this.slidesList[this.currentSlideIndex].show()
 
     }
 
-    removeBackground(){
+    removeSlide(){
         // TODO
-        console.log('BackgroundSlideshow.removeBackground: not implemented yet')
+        console.log('Slideshow.removeSlide: not implemented yet')
+    }
+}
+
+class BackgroundSlideshow extends SlideShow{
+
+    constructor(id, firstSlide, containerID) {
+        super(id, firstSlide, containerID,
+            "background-slideshow",
+            "background-container")
     }
 
 }
 
-class Background{
+class ForegroundSlideshow extends SlideShow{
 
-    constructor(src, alt, id) {
+    constructor(id, firstSlide, containerID) {
+        super(id, firstSlide, containerID,
+            "foreground-slideshow",
+            "foreground-container")
+    }
+
+}
+
+class Slide{
+    constructor(src, alt, id, className) {
 
         // html id of the background image element
-        // should check for uniqueness TODO
+        // should check for uniqueness? or try catch? TODO
         this.id = id
 
-        // note this element is not created yet, this is just the html text
-        this.html = `<img class="background" id=${this.id} class="background-img" src=${src} alt=${alt} >`
+        // note this element is not added to the DOM yet
+        this.element = $(`<img class=${className} id=${this.id} src=${src} alt=${alt} >`)
     }
 
     hide(){
-        $(`#${this.id}`).hide()
+        $(this.element).hide()
     }
 
     show(){
-        $(`#${this.id}`).show()
+        $(this.element).show()
+    }
+}
+
+class BackgroundSlide extends Slide{
+
+    constructor(src, alt, id) {
+        super(src,alt, id, "background-slide")
+    }
+
+}
+
+class ForegroundSlide extends Slide{
+
+    constructor(src, alt, id) {
+        super(src,alt, id, "foreground-slide")
     }
 
 }
