@@ -1,36 +1,35 @@
 .background-slideshow{
     position: absolute;
+    display: flex;
+    align-content: center;
     z-index: -1;
 }
 .background-container{
-    position: static;
-    max-width:100%;
-    max-height:100%;
 }
 .background-slide{
-    position: static;
     max-width:100%;
     max-height:100%;
 }
 
 .foreground-slideshow{
-    positon: relative;
-    z-index: 1;
+    display: flex;
+    z-index: 100;
+    max-width:80%;
+    max-height:50%;
 
 }
 .foreground-container{
-    position: static;
-    max-width:100%;
-    max-height:100%;
 }
 .foreground-slide{
-    position: static;
     max-width:100%;
     max-height:100%;
 }
 
 .forward-arrow{
+    align-self: center;
+    padding: 10px;
 }
 .back-arrow{
-
+    align-self: center;
+    padding: 10px;
 }

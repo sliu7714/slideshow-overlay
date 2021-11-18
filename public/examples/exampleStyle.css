@@ -1,8 +1,10 @@
 /*styling only for example file.*/
 #testDiv{
     position: absolute;
-    height: 300px;
-    width: 300px;
+    height: 500px;
+    width: 500px;
+/*    TEMP! should change later*/
+    z-index: -100;
 
 }
 body{
