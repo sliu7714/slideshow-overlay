@@ -3,10 +3,11 @@
     position: absolute;
     height: 500px;
     width: 500px;
-/*    TEMP! should change later*/
-    z-index: -100;
 
 }
 body{
     background: orange;
 }
+/*#shirt-slideshow2{*/
+/*    margin-top: 200px;*/
+/*}*/

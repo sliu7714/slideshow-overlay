@@ -22,17 +22,34 @@ const shirtBrown = new ForegroundSlide(brownShirtURL, 'brown shirt', 'shirt_brow
 const shirtGreen = new ForegroundSlide(greenShirtURL, 'green shirt', 'shirt_green_1')
 
 
-const bgSlideshow = new BackgroundSlideshow('bgs_1', bg1, 'testDiv')
+const bgSlideshow = new BackgroundSlideshow('bgs_1','500px', bg1)
 bgSlideshow.addSlide(bg2)
 bgSlideshow.addSlide(bg3)
 
 
-const shirtSlideshow = new ForegroundSlideshow('shirt-slideshow', shirtBlue, 'testDiv')
+const shirtSlideshow = new ForegroundSlideshow('shirt-slideshow','300px', shirtBlue)
 shirtSlideshow.addSlide(shirtWhite)
 shirtSlideshow.addSlide(shirtBrown)
 shirtSlideshow.addSlide(shirtGreen)
 shirtSlideshow.addSlide(shirtBlack)
 
+const shirtBlack2 = new ForegroundSlide(blackShirtURL, 'black shirt', 'shirt_black_2')
+const shirtBlue2 = new ForegroundSlide(blueShirtURL, 'blue shirt', 'shirt_blue_2')
+const shirtWhite2 = new ForegroundSlide(whiteShirtURL, 'white shirt', 'shirt_white_2')
+const shirtBrown2 = new ForegroundSlide(brownShirtURL, 'brown shirt', 'shirt_brown_2')
+const shirtGreen2 = new ForegroundSlide(greenShirtURL, 'green shirt', 'shirt_green_2')
+const shirtSlideshow2 = new ForegroundSlideshow('shirt-slideshow2', '100px', shirtBlue2)
+shirtSlideshow2.addSlide(shirtWhite2)
+shirtSlideshow2.addSlide(shirtBrown2)
+shirtSlideshow2.addSlide(shirtGreen2)
+shirtSlideshow2.addSlide(shirtBlack2)
+
+const slideshowContainer = new SlideshowContainer('slide_cont', 'testDiv',  bgSlideshow, shirtSlideshow)
+slideshowContainer.addForegroundSlideshow(shirtSlideshow2)
+
 $('#testButton').click(()=>{
     console.log('test button clicked')
+    // shirtSlideshow2.removeSlide(shirtBlue2)
 })
+
+// NOTES: can't use same slide in different slideshows,
