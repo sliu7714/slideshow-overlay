@@ -4,7 +4,8 @@
   "description": "CSC309 Fall 2021 Individual Assignment",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,7 @@
     "url": "https://github.com/csc309-fall-2021/js-library-liusiy24/issues"
   },
   "homepage": "https://github.com/csc309-fall-2021/js-library-liusiy24#readme",
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
