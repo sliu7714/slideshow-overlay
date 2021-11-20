@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, '/public')))
 
 
 app.get('/', (req, res) => {
-    res.send('<a href="static/public/examples/examples.html">click here to go to the example html page</a>')
+    res.send('<a href="examples/examples.html">click here to go to the example html page</a>')
 })
 
 const port = process.env.PORT || 5000
