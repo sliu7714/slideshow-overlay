@@ -47,9 +47,62 @@ shirtSlideshow2.addSlide(shirtBlack2)
 const slideshowContainer = new SlideshowContainer('slide_cont', 'testDiv',  bgSlideshow, shirtSlideshow)
 slideshowContainer.addForegroundSlideshow(shirtSlideshow2)
 
+
 $('#testButton').click(()=>{
     console.log('test button clicked')
     // shirtSlideshow2.removeSlide(shirtBlue2)
 })
 
 // NOTES: can't use same slide in different slideshows,
+
+
+// CLOTHES SLIDESHOW
+
+// background:
+const clothesBgSlides = []
+const numClothesBgSlides = 7
+// make background slide objects
+for (let i = 1; i <= numClothesBgSlides; i++){
+    clothesBgSlides.push(new BackgroundSlide(`../images/clothes/bg/bg${i}.png`, 'person outline', `clothing-bg${i}`))
+}
+const clothesBgSlideshow = new BackgroundSlideshow('clothes-bg-slideshow', '500px', clothesBgSlides[0])
+for (let i = 1; i < numClothesBgSlides; i++) {
+    clothesBgSlideshow.addSlide(clothesBgSlides[i])
+}
+
+// foreground:
+// TODO - temp use shirtslideshow 2
+const clothesTopsSlides = []
+const numTops = 8
+for (let i = 1; i <= numTops; i++){
+    clothesTopsSlides.push(new ForegroundSlide(`../images/clothes/tops/top${i}.png`, 'shirt', `clothing-top${i}`))
+}
+const clothesTopsSlideshow = new BackgroundSlideshow('clothes-tops-slideshow', '145px', clothesTopsSlides[0])
+for (let i = 1; i < numTops; i++) {
+    clothesTopsSlideshow.addSlide(clothesTopsSlides[i])
+}
+
+const clothesBottomsSlides = []
+const numBottoms = 5
+for (let i = 1; i <= numBottoms; i++){
+    clothesBottomsSlides.push(new ForegroundSlide(`../images/clothes/bottoms/bottom${i}.png`, 'clothing bottom', `clothing-bottom${i}`))
+}
+const clothesBottomsSlideshow = new BackgroundSlideshow('clothes-bottoms-slideshow', '245px', clothesBottomsSlides[0])
+for (let i = 1; i < numBottoms; i++) {
+    clothesBottomsSlideshow.addSlide(clothesBottomsSlides[i])
+}
+
+const clothesShoesSlides = []
+const numShoes = 3
+for (let i = 1; i <= numShoes; i++){
+    clothesShoesSlides.push(new ForegroundSlide(`../images/clothes/shoes/shoe${i}.png`, 'clothing bottom', `clothing-bottom${i}`))
+}
+const clothesShoesSlideshow = new BackgroundSlideshow('clothes-shoes-slideshow', '150px', clothesShoesSlides[0])
+for (let i = 1; i < numShoes; i++) {
+    clothesShoesSlideshow.addSlide(clothesShoesSlides[i])
+}
+
+// container for bg and foreground:
+const clothesSlideshowContainer = new SlideshowContainer('clothes-slideshow-container', 'testDiv', clothesBgSlideshow, clothesTopsSlideshow)
+clothesSlideshowContainer.addForegroundSlideshow(clothesBottomsSlideshow)
+clothesSlideshowContainer.addForegroundSlideshow(clothesShoesSlideshow)

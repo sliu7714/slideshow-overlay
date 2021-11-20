@@ -48,3 +48,9 @@
     padding: 2px;
     pointer-events: visiblePainted;
 }
+
+/* this styling is to remove the blue overlay on images when clicking to select them */
+/* since it is often possible to mis-click an arrow and select the image instead so this just makes it look nicer*/
+img {
+    user-select: none;
+}
