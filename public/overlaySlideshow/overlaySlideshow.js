@@ -6,14 +6,20 @@ const forwardArrowHtml = `<svg class="forward-arrow" xmlns="http://www.w3.org/20
 const backArrowHtml = `<svg class="back-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>`
 
 // NOTES
+// add later on:
+// maybe margins option?, optional id, only background slide - use undefined or null?
+// also options to add multiple slides or additional function to create multiple slides
 
 class SlideshowContainer {
-    constructor(id, containerID, backgroundSlideshow, foregroundSlideshow) {
+    constructor(id, containerID, backgroundSlideshow, foregroundSlideshow = null) {
         this.id = id
         this.element = $(`<div class="slideshows-container" id="${this.id}">`)
         $(this.element).css('height', `${backgroundSlideshow.slideShowContainer.css('height')}`)
         $(this.element).append(backgroundSlideshow.slideShowContainer)
-        $(this.element).append(foregroundSlideshow.slideShowContainer)
+
+        if(foregroundSlideshow !== null && foregroundSlideshow !== undefined){
+            $(this.element).append(foregroundSlideshow.slideShowContainer)
+        }
 
         // add to DOM
         $(`#${containerID}`).append(this.element)
@@ -47,6 +53,8 @@ class SlideShow{
         $(this.slideShowContainer).append(this.slidesContainer)
         $(this.slideShowContainer).append(forwardArrow)
 
+        $(this.slideShowContainer).css('pointer-events', 'none')
+
         // NOTE that this does not add element to DOM
 
         // add onClick events for the arrows
@@ -56,9 +64,15 @@ class SlideShow{
 
     addSlide(slide){
         $(this.slidesContainer).append(slide.element)
-        slide.hide()
+        $(slide.element).hide()
         this.slidesList.push(slide)
         this.numSlides ++
+    }
+
+    addSlides(slides){
+        slides.forEach(slide =>{
+            this.addSlide(slide)
+        })
     }
 
     nextSlide(){
@@ -85,10 +99,10 @@ class SlideShow{
             return
         }
         // hide previous slide
-        this.slidesList[this.currentSlideIndex].hide()
+        $(this.slidesList[this.currentSlideIndex].element).hide()
         // show current slide
         this.currentSlideIndex = index;
-        this.slidesList[this.currentSlideIndex].show()
+        $(this.slidesList[this.currentSlideIndex].element).show()
 
     }
 
@@ -109,6 +123,20 @@ class SlideShow{
 
 
     }
+
+    // move order of this slideshow forward
+    orderForward(){
+        const zIndex = parseInt($(this.slideShowContainer).css('z-index'))
+        $(this.slideShowContainer).css('z-index', zIndex + 1)
+    }
+    // move order of this slideshow forward
+    orderBackward(){
+        const zIndex = parseInt($(this.slideShowContainer).css('z-index'))
+        console.log(`old z-index`, zIndex)
+        $(this.slideShowContainer).css('z-index', zIndex - 1)
+        console.log(`old z-index`, $(this.slideShowContainer).css('z-index'))
+    }
+
 }
 
 class BackgroundSlideshow extends SlideShow{
@@ -140,14 +168,6 @@ class Slide{
 
         // note this element is not added to the DOM yet
         this.element = $(`<img class=${className} id=${this.id} src=${src} alt=${alt} >`)
-    }
-
-    hide(){
-        $(this.element).hide()
-    }
-
-    show(){
-        $(this.element).show()
     }
 
 }

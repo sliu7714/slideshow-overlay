@@ -2,11 +2,12 @@
 #testDiv{
     position: absolute;
     height: 500px;
-    width: 500px;
+    width: 400px;
+    margin-left: 40px;
 }
 body{
     /*background: orange;*/
-
+    font-family: "arial";
 }
 
 #clothes-tops-slideshow{

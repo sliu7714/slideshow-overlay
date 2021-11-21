@@ -15,18 +15,24 @@ const bg1 = new BackgroundSlide(image1URL, 'image 1', 'bg_10')
 const bg2 = new BackgroundSlide(image2URL, 'image 2', 'bg_11')
 const bg3 = new BackgroundSlide(image3URL, 'image 3', 'bg_12')
 
-const shirtBlack = new ForegroundSlide(blackShirtURL, 'black shirt', 'shirt_black_1')
-const shirtBlue = new ForegroundSlide(blueShirtURL, 'blue shirt', 'shirt_blue_1')
-const shirtWhite = new ForegroundSlide(whiteShirtURL, 'white shirt', 'shirt_white_1')
-const shirtBrown = new ForegroundSlide(brownShirtURL, 'brown shirt', 'shirt_brown_1')
-const shirtGreen = new ForegroundSlide(greenShirtURL, 'green shirt', 'shirt_green_1')
+// const bg4 = new BackgroundSlide(image1URL, 'image 1', 'bg_13')
+// const bg5 = new BackgroundSlide(image2URL, 'image 2', 'bg_14')
+// const bg6 = new BackgroundSlide(image3URL, 'image 3', 'bg_15')
+//
+// const bgSlideshow2 = new BackgroundSlideshow('bgs_2','500px', bg6)
+// bgSlideshow2.addSlide(bg4)
+// bgSlideshow2.addSlide(bg5)
 
 
 const bgSlideshow = new BackgroundSlideshow('bgs_1','500px', bg1)
 bgSlideshow.addSlide(bg2)
 bgSlideshow.addSlide(bg3)
 
-
+const shirtBlack = new ForegroundSlide(blackShirtURL, 'black shirt', 'shirt_black_1')
+const shirtBlue = new ForegroundSlide(blueShirtURL, 'blue shirt', 'shirt_blue_1')
+const shirtWhite = new ForegroundSlide(whiteShirtURL, 'white shirt', 'shirt_white_1')
+const shirtBrown = new ForegroundSlide(brownShirtURL, 'brown shirt', 'shirt_brown_1')
+const shirtGreen = new ForegroundSlide(greenShirtURL, 'green shirt', 'shirt_green_1')
 const shirtSlideshow = new ForegroundSlideshow('shirt-slideshow','300px', shirtBlue)
 shirtSlideshow.addSlide(shirtWhite)
 shirtSlideshow.addSlide(shirtBrown)
@@ -53,7 +59,7 @@ $('#testButton').click(()=>{
     // shirtSlideshow2.removeSlide(shirtBlue2)
 })
 
-// NOTES: can't use same slide in different slideshows,
+
 
 
 // CLOTHES SLIDESHOW
@@ -66,9 +72,7 @@ for (let i = 1; i <= numClothesBgSlides; i++){
     clothesBgSlides.push(new BackgroundSlide(`../images/clothes/bg/bg${i}.png`, 'person outline', `clothing-bg${i}`))
 }
 const clothesBgSlideshow = new BackgroundSlideshow('clothes-bg-slideshow', '500px', clothesBgSlides[0])
-for (let i = 1; i < numClothesBgSlides; i++) {
-    clothesBgSlideshow.addSlide(clothesBgSlides[i])
-}
+clothesBgSlideshow.addSlides(clothesBgSlides.slice(1))
 
 // foreground:
 // TODO - temp use shirtslideshow 2
@@ -78,9 +82,7 @@ for (let i = 1; i <= numTops; i++){
     clothesTopsSlides.push(new ForegroundSlide(`../images/clothes/tops/top${i}.png`, 'shirt', `clothing-top${i}`))
 }
 const clothesTopsSlideshow = new BackgroundSlideshow('clothes-tops-slideshow', '145px', clothesTopsSlides[0])
-for (let i = 1; i < numTops; i++) {
-    clothesTopsSlideshow.addSlide(clothesTopsSlides[i])
-}
+clothesTopsSlideshow.addSlides(clothesTopsSlides.slice(1))
 
 const clothesBottomsSlides = []
 const numBottoms = 5
@@ -88,9 +90,7 @@ for (let i = 1; i <= numBottoms; i++){
     clothesBottomsSlides.push(new ForegroundSlide(`../images/clothes/bottoms/bottom${i}.png`, 'clothing bottom', `clothing-bottom${i}`))
 }
 const clothesBottomsSlideshow = new BackgroundSlideshow('clothes-bottoms-slideshow', '245px', clothesBottomsSlides[0])
-for (let i = 1; i < numBottoms; i++) {
-    clothesBottomsSlideshow.addSlide(clothesBottomsSlides[i])
-}
+clothesBottomsSlideshow.addSlides(clothesBottomsSlides.slice(1))
 
 const clothesShoesSlides = []
 const numShoes = 3
@@ -98,11 +98,18 @@ for (let i = 1; i <= numShoes; i++){
     clothesShoesSlides.push(new ForegroundSlide(`../images/clothes/shoes/shoe${i}.png`, 'clothing bottom', `clothing-bottom${i}`))
 }
 const clothesShoesSlideshow = new BackgroundSlideshow('clothes-shoes-slideshow', '150px', clothesShoesSlides[0])
-for (let i = 1; i < numShoes; i++) {
-    clothesShoesSlideshow.addSlide(clothesShoesSlides[i])
-}
+clothesShoesSlideshow.addSlides(clothesShoesSlides.slice(1))
 
 // container for bg and foreground:
 const clothesSlideshowContainer = new SlideshowContainer('clothes-slideshow-container', 'testDiv', clothesBgSlideshow, clothesTopsSlideshow)
 clothesSlideshowContainer.addForegroundSlideshow(clothesBottomsSlideshow)
 clothesSlideshowContainer.addForegroundSlideshow(clothesShoesSlideshow)
+
+$('#order-fwd-btn').click(()=>{
+    console.log('bottoms forward')
+    clothesBottomsSlideshow.orderForward()
+})
+$('#order-back-btn').click(()=>{
+    console.log('bottoms backwards')
+    clothesBottomsSlideshow.orderBackward()
+})
