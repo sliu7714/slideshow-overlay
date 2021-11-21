@@ -1,13 +1,22 @@
 /*styling only for example file.*/
 #testDiv{
-    position: absolute;
-    height: 500px;
     width: 400px;
     margin-left: 40px;
 }
 body{
-    /*background: orange;*/
     font-family: "arial";
+}
+button{
+    margin: 5px;
+}
+li{
+    margin-top: 10px;
+}
+
+
+
+#clothing-section{
+    margin-left: 40px;
 }
 
 #clothes-tops-slideshow{
@@ -16,7 +25,7 @@ body{
 }
 #clothes-bottoms-slideshow{
     margin-top: 200px;
-    margin-left: 40px;
+    margin-left: 38px;
 }
 #clothes-shoes-slideshow{
     margin-top: 350px;

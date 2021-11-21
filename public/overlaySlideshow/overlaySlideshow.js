@@ -107,35 +107,28 @@ class SlideShow{
     }
 
     removeSlide(slide){
-        // TODO: NOT done yet:
-        // if(this.numSlides > 1){
-        //     const old_length = this.slidesList.length
-        //     this.slidesList = this.slidesList.map(s => s.id !== slide.id)
-        //     if (this.slidesList.length >= old_length){
-        //         throw "Trying to remove a slide that is not part of this slideshow"
-        //     }
-        //     $(slide).remove()
-        //     this.numSlides = this.slidesList.length
-        // }
-        // else{
-        //     throw "Slideshow must have at least one slide element"
-        // }
+        if(!(slide instanceof Slide)){
+            throw "Please put a valid Slide object as a parameter"
+        }
+        if(this.numSlides > 1){
+            const old_length = this.slidesList.length
+            this.slidesList = this.slidesList.filter(s => s.id !== slide.id)
 
+            if (this.slidesList.length >= old_length){
+                throw "Trying to remove a slide that is not part of this slideshow"
+            }
+
+            this.numSlides = this.slidesList.length
+            this.changeSlide(0)
+            $(slide.element).remove()
+        }
+        else{
+            throw "You cannot remove the last slide in this slideshow. Slideshow must have at least one slide element"
+        }
 
     }
 
-    // move order of this slideshow forward
-    orderForward(){
-        const zIndex = parseInt($(this.slideShowContainer).css('z-index'))
-        $(this.slideShowContainer).css('z-index', zIndex + 1)
-    }
-    // move order of this slideshow forward
-    orderBackward(){
-        const zIndex = parseInt($(this.slideShowContainer).css('z-index'))
-        console.log(`old z-index`, zIndex)
-        $(this.slideShowContainer).css('z-index', zIndex - 1)
-        console.log(`old z-index`, $(this.slideShowContainer).css('z-index'))
-    }
+
 
 }
 
@@ -155,6 +148,19 @@ class ForegroundSlideshow extends SlideShow{
         super(id, height, firstSlide,
             "foreground-slideshow",
             "foreground-container")
+    }
+
+    // move order of this slideshow forward
+    orderForward(){
+        const zIndex = parseInt($(this.slideShowContainer).css('z-index'))
+        $(this.slideShowContainer).css('z-index', zIndex + 1)
+    }
+    // move order of this slideshow forward
+    orderBackward(){
+        const zIndex = parseInt($(this.slideShowContainer).css('z-index'))
+        console.log(`old z-index`, zIndex)
+        $(this.slideShowContainer).css('z-index', zIndex - 1)
+        console.log(`old z-index`, $(this.slideShowContainer).css('z-index'))
     }
 
 }

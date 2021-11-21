@@ -23,7 +23,7 @@
 }
 
 .foreground-slideshow{
-    position: relative;
+    position: absolute;
     display: flex;
     justify-content: center;
     z-index: 200;
