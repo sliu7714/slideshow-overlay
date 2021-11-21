@@ -11,13 +11,13 @@ const backArrowHtml = `<svg class="back-arrow" xmlns="http://www.w3.org/2000/svg
 // also options to add multiple slides or additional function to create multiple slides
 
 class SlideshowContainer {
-    constructor(id, containerID, backgroundSlideshow, foregroundSlideshow = null) {
+    constructor(id, containerID, backgroundSlideshow, foregroundSlideshow ) {
         this.id = id
         this.element = $(`<div class="slideshows-container" id="${this.id}">`)
         $(this.element).css('height', `${backgroundSlideshow.slideShowContainer.css('height')}`)
         $(this.element).append(backgroundSlideshow.slideShowContainer)
 
-        if(foregroundSlideshow !== null && foregroundSlideshow !== undefined){
+        if( foregroundSlideshow !== undefined && foregroundSlideshow !== null){
             $(this.element).append(foregroundSlideshow.slideShowContainer)
         }
 

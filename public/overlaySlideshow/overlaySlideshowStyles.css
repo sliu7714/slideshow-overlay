@@ -1,7 +1,7 @@
 
 .slideshows-container{
     position: static;
-    background: darkolivegreen;
+    /*background: darkolivegreen;*/
     display: flex;
     align-content: center;
     flex-direction: column;

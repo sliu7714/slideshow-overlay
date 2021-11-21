@@ -1,10 +1,10 @@
 /*styling only for example file.*/
 #testDiv{
     width: 400px;
-    margin-left: 40px;
 }
 body{
     font-family: "arial";
+    margin-left: 40px;
 }
 button{
     margin: 5px;
@@ -14,10 +14,6 @@ li{
 }
 
 
-
-#clothing-section{
-    margin-left: 40px;
-}
 
 #clothes-tops-slideshow{
     margin-top: 100px;
@@ -30,4 +26,8 @@ li{
 #clothes-shoes-slideshow{
     margin-top: 350px;
     margin-left: 40px;
+}
+
+#bg-slideshow{
+    width: 500px;
 }
