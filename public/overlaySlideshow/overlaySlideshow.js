@@ -5,11 +5,6 @@
 const forwardArrowHtml = `<svg class="forward-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>`
 const backArrowHtml = `<svg class="back-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>`
 
-// NOTES
-// add later on:
-// maybe margins option?, optional id, only background slide - use undefined or null?
-// also options to add multiple slides or additional function to create multiple slides
-
 class SlideshowContainer {
     constructor(id, containerID, backgroundSlideshow, foregroundSlideshow ) {
         this.id = id
@@ -125,9 +120,7 @@ class SlideShow{
         else{
             throw "You cannot remove the last slide in this slideshow. Slideshow must have at least one slide element"
         }
-
     }
-
 
 
 }
