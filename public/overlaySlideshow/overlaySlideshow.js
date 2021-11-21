@@ -111,6 +111,7 @@ class SlideShow{
             throw "Please put a valid Slide object as a parameter"
         }
         if(this.numSlides > 1){
+            this.changeSlide(0)
             const old_length = this.slidesList.length
             this.slidesList = this.slidesList.filter(s => s.id !== slide.id)
 
@@ -119,7 +120,6 @@ class SlideShow{
             }
 
             this.numSlides = this.slidesList.length
-            this.changeSlide(0)
             $(slide.element).remove()
         }
         else{

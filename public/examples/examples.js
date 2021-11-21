@@ -77,6 +77,69 @@ $('#remove-shoe-btn').click(()=>{
 })
 // END CLOTHES SLIDESHOW
 
+// GIFT SLIDESHOW
+const giftBoxSlides = []
+const numBoxes = 6
+for (let i = 1; i <= numBoxes; i++){
+    giftBoxSlides.push(new BackgroundSlide(`../images/gift/box/box${i}.png`, 'box', `gift-box${i}`))
+}
+const giftBoxSlideshow = new BackgroundSlideshow('gift-boxes-slideshow', '400px', giftBoxSlides[0])
+giftBoxSlideshow.addSlides(giftBoxSlides.slice(1))
+
+const giftPaperSlides = []
+const numPaper = 5
+for (let i = 1; i <= numPaper; i++){
+    giftPaperSlides.push(new ForegroundSlide(`../images/gift/paper/paper${i}.png`, 'crinkle packing paper', `gift-paper${i}`))
+}
+const giftPaperSlideshow = new ForegroundSlideshow('gift-paper-slideshow', '300px', giftPaperSlides[0])
+giftPaperSlideshow.addSlides(giftPaperSlides.slice(1))
+
+
+const bearURLs = ['https://purepng.com/public/uploads/large/purepng.com-teddy-bearobjectstoybearteddy-beardoll-631521882725jykyi.png',
+    'https://purepng.com/public/uploads/large/pink-teddy-bear-y1k.png',
+    'https://purepng.com/public/uploads/large/purepng.com-teddy-bearobjectstoybearteddy-beardoll-631521882709zx0uu.png',
+    'https://purepng.com/public/uploads/large/purepng.com-teddy-bearobjectstoybearobjectdoll-63152188394154png.png'
+    ]
+const giftBearSlides = []
+const numBear = 4
+for (let i = 0; i < numBear; i++){
+    giftBearSlides.push(new ForegroundSlide(bearURLs[i], 'bear', `gift-bear${i}`))
+}
+const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', '160px', giftBearSlides[0])
+giftBearSlideshow.addSlides(giftBearSlides.slice(1))
+
+
+
+const cupURLs = ['https://purepng.com/public/uploads/large/purepng.com-cupcupopen-containertablewarecarrying-drinksceramic-cup-1701528266244lgzbl.png',
+    'https://purepng.com/public/uploads/large/purepng.com-cupcupopen-containertablewarecarrying-drinksceramic-cup-1701528266193sfx1o.png',
+    'https://purepng.com/public/uploads/large/purepng.com-cup-mug-coffeecupmufcoffeebean-1411527406382vrz4g.png'
+    ]
+const giftCupSlides = []
+const numCup = 3
+for (let i = 0; i < numCup; i++){
+    giftCupSlides.push(new ForegroundSlide(cupURLs[i], 'cup', `gift-cup${i}`))
+}
+const giftCupSlideshow = new ForegroundSlideshow('gift-cup-slideshow', '90px', giftCupSlides[0])
+giftCupSlideshow.addSlides(giftCupSlides.slice(1))
+
+const scarfURLs = ['https://purepng.com/public/uploads/large/simple-square-handkerchief-flu.png',
+    'https://purepng.com/public/uploads/large/gingham-revolution-handkerchief-wxp.png',
+    'https://purepng.com/public/uploads/large/white-hand-rolled-men-handkerchief-2o0.png',
+    'https://purepng.com/public/uploads/large/flowers-square-handkerchief-ksm.png',
+]
+const giftScarfSlides = []
+const numScarf = 4
+for (let i = 0; i < numScarf; i++){
+    giftScarfSlides.push(new ForegroundSlide(scarfURLs[i], 'scarf', `gift-scarf${i}`))
+}
+const giftScarfSlideshow = new ForegroundSlideshow('gift-scarf-slideshow', '110px', giftScarfSlides[0])
+giftScarfSlideshow.addSlides(giftScarfSlides.slice(1))
+
+
+const giftSlideshowContainer = new SlideshowContainer('gift-slideshow-container', 'gift-slideshow-div', giftBoxSlideshow, giftPaperSlideshow)
+giftSlideshowContainer.addForegroundSlideshow(giftBearSlideshow)
+giftSlideshowContainer.addForegroundSlideshow(giftCupSlideshow)
+giftSlideshowContainer.addForegroundSlideshow(giftScarfSlideshow)
 
 // $('#testButton').click(()=>{
 //     console.log('test button clicked')

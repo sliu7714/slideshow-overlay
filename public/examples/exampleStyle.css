@@ -31,3 +31,21 @@ li{
 #bg-slideshow{
     width: 500px;
 }
+
+#gift-paper-slideshow{
+    margin-left: 60px;
+}
+#gift-bear-slideshow{
+    margin-left: 115px;
+}
+#gift-scarf-slideshow{
+    margin-top: 90px;
+    margin-left: 265px;
+}
+#gift-cup-slideshow{
+    margin-top: 145px;
+    margin-left: 150px;
+}
+#gift-slideshow-div{
+    width: 400px;
+}
