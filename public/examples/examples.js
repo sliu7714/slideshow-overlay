@@ -2,7 +2,7 @@
 "use strict"
 
 
-// ONLY BACKGROUND SLIDE EXAMPLE
+// -----------------------------ONLY BACKGROUND SLIDE EXAMPLE------------------------------
 const image1URL = 'https://images.unsplash.com/photo-1547103106-9a0e718bb2d2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=686&q=80'
 const image2URL = 'https://images.unsplash.com/photo-1548133650-7e2b96ebe5e6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=681&q=80'
 const image3URL = 'https://images.unsplash.com/photo-1536431311719-398b6704d4cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
@@ -16,12 +16,12 @@ bgSlideshow.addSlide(bg2)
 bgSlideshow.addSlide(bg3)
 
 const onlyBgSlideshowContainer = new SlideshowContainer('only-bg-slideshow-container', 'only-slideshow-div', bgSlideshow)
-// END ONLY BACKGROUND SLIDE EXAMPLE
+// ---------------------------END ONLY BACKGROUND SLIDE EXAMPLE-----------------------------
 
 
 
 
-// CLOTHES SLIDESHOW
+// --------------------------------CLOTHES SLIDESHOW--------------------------------
 // background:
 const clothesBgSlides = []
 const numClothesBgSlides = 7
@@ -75,9 +75,14 @@ $('#remove-shoe-btn').click(()=>{
     console.log('remove white shoes from shoe slideshow')
     clothesShoesSlideshow.removeSlide(clothesShoesSlides[2])
 })
-// END CLOTHES SLIDESHOW
 
-// GIFT SLIDESHOW
+$('#random-btn').click(()=>{
+    console.log('random slides clothes')
+    clothesSlideshowContainer.randomSlides()
+})
+// --------------------------------END CLOTHES SLIDESHOW--------------------------------
+
+// --------------------------------GIFT SLIDESHOW--------------------------------
 const giftBoxSlides = []
 const numBoxes = 6
 for (let i = 1; i <= numBoxes; i++){
@@ -107,7 +112,6 @@ for (let i = 0; i < numBear; i++){
 }
 const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', '160px', giftBearSlides[0])
 giftBearSlideshow.addSlides(giftBearSlides.slice(1))
-
 
 
 const cupURLs = ['https://purepng.com/public/uploads/large/purepng.com-cupcupopen-containertablewarecarrying-drinksceramic-cup-1701528266244lgzbl.png',
@@ -140,7 +144,6 @@ const giftSlideshowContainer = new SlideshowContainer('gift-slideshow-container'
 giftSlideshowContainer.addForegroundSlideshow(giftBearSlideshow)
 giftSlideshowContainer.addForegroundSlideshow(giftCupSlideshow)
 giftSlideshowContainer.addForegroundSlideshow(giftScarfSlideshow)
+//--------------------------------END GIFTS SLIDESHOW----------------------------------
 
-// $('#testButton').click(()=>{
-//     console.log('test button clicked')
-// })
+

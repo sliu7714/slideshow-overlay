@@ -10,10 +10,16 @@ class SlideshowContainer {
         this.id = id
         this.element = $(`<div class="slideshows-container" id="${this.id}">`)
         $(this.element).css('height', `${backgroundSlideshow.slideShowContainer.css('height')}`)
+        
+        this.backgroundSlideshow = backgroundSlideshow
         $(this.element).append(backgroundSlideshow.slideShowContainer)
+        
+        // list of foreground slideshow elements
+        this.foregroundSlideshowList = []
 
         if( foregroundSlideshow !== undefined && foregroundSlideshow !== null){
             $(this.element).append(foregroundSlideshow.slideShowContainer)
+            this.foregroundSlideshowList.push(foregroundSlideshow)
         }
 
         // add to DOM
@@ -22,6 +28,16 @@ class SlideshowContainer {
 
     addForegroundSlideshow(foregroundSlideshow){
         $(this.element).append(foregroundSlideshow.slideShowContainer)
+        this.foregroundSlideshowList.push(foregroundSlideshow)
+    }
+
+    randomSlides(){
+        // change background
+        this.backgroundSlideshow.randomSlide()
+        // change foreground
+        this.foregroundSlideshowList.forEach((foregroundSlideshow) => {
+            foregroundSlideshow.randomSlide()
+        })
     }
 
 }
@@ -88,6 +104,11 @@ class SlideShow{
         this.changeSlide(new_index)
     }
 
+    randomSlide(){
+        const rand_index = (Math.floor(Math.random()*this.numSlides))
+        this.changeSlide(rand_index)
+    }
+
     changeSlide(index){
         if (index < 0 || index > this.slidesList.length){
             console.log(`Slideshow.changeSlide: slideshow index out of bounds`)
@@ -151,9 +172,9 @@ class ForegroundSlideshow extends SlideShow{
     // move order of this slideshow forward
     orderBackward(){
         const zIndex = parseInt($(this.slideShowContainer).css('z-index'))
-        console.log(`old z-index`, zIndex)
+        // console.log(`old z-index`, zIndex)
         $(this.slideShowContainer).css('z-index', zIndex - 1)
-        console.log(`old z-index`, $(this.slideShowContainer).css('z-index'))
+        // console.log(`old z-index`, $(this.slideShowContainer).css('z-index'))
     }
 
 }
