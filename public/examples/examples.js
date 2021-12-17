@@ -16,6 +16,17 @@ bgSlideshow.addSlide(bg2)
 bgSlideshow.addSlide(bg3)
 
 const onlyBgSlideshowContainer = new SlideshowContainer('only-bg-slideshow-container', 'only-slideshow-div', bgSlideshow)
+
+
+const textSlide1 = new TextSlide( "this is test1", 20, 'ts_1')
+const textSlide2 = new TextSlide( "this is test2", 20, 'ts_2')
+
+const textSlideshow = new ForegroundSlideshow('text-slide', '100px', textSlide1 )
+textSlideshow.addSlide(textSlide2)
+
+onlyBgSlideshowContainer.addForegroundSlideshow(textSlideshow)
+
+
 // ---------------------------END ONLY BACKGROUND SLIDE EXAMPLE-----------------------------
 
 

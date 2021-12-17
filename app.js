@@ -7,11 +7,9 @@ const path = require('path');
 
 app.use(express.static(path.join(__dirname, '/public')))
 
-// app.use(express.static('public'))
-
 
 app.get('/', (req, res) => {
-    res.send('<a href="examples/examples.html">click here to go to the example html page</a>')
+    res.redirect('/examples/landingPage.html')
 })
 
 const port = process.env.PORT || 5000
