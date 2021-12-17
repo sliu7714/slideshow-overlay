@@ -4,115 +4,129 @@
     <meta charset="UTF-8">
     <title>Examples</title>
     <link rel="stylesheet" href="../overlaySlideshow/overlaySlideshowStyles.css">
-    <link rel="stylesheet" href="exampleStyle.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js" defer></script>
     <script src="../overlaySlideshow/overlaySlideshow.js" defer></script>
     <script src="examples.js" defer></script>
 
 </head>
 <body>
-    <div>
-        <h2>CSC309 Individual Project Phase Alpha </h2>
-        Overlay Slideshow Javascript Library examples:
-        <br>
-        <i>note: some of the images might take a second to load</i>
-       <!-- <button id="testButton">test button(temp)</button> -->
+    <div class="header">
+        <a href='/examples/landingPage.html'>Overlay Slideshow</a>
+
+        <a href='/examples/examples.html' class="current-page">Examples</a>
+
+        <a href='/examples/documentation.html'>Documentation</a>
+
+        <a href='https://github.com/csc309-fall-2021/js-library-liusiy24'>Github</a>
 
     </div>
 
-    <div id="test-div"></div>
-
-    <div id="clothing-section">
-        <h2>Clothing slideshow example:</h2>
-        <ul>
-            <li>
-                You may use the outer arrows to change the model's skin tone
-            </li>
-            <li>
-                The arrows in the 3 inner foreground slideshows can be used to change the shirt,bottom, and shoes on the model
-            </li>
-            <li>
-                You may use the buttons below to edit the slideshow.
-                <br>
-                Refresh the page to reset to the default created in the javascript file.
-            </li>
-        </ul>
-
-        <div id="clothing-slideshow-div"></div>
-
-        <h5> Buttons to edit the clothing slideshow:</h5>
-        <ul>
-            <li>
-                <button id="order-fwd-btn">bottoms forward</button>
-                <button id="order-back-btn">bottoms backwards</button>
-                <br>
-                These buttons utilize the orderForward() and orderBackward() functions to change the order of
-                the bottoms(pants and skirts) slideshow above.
-                <br>
-                <i>note: the order is not relative to other layers so if you order a layer forward multiple times you must
-                    reorder it back multiple times to get the layer back to its original order</i>
-                <br>
-                For example, if you were to want the long pants to appear above the shoes, press the 'bottoms forward' button
-                and to move it back, press the 'bottoms backwards' button.
-
-                <br>
-            </li>
-            <li>
-                <button id="remove-shoe-btn">remove the white shoes from the slideshow</button>
-                <br>
-                This button utilizes the remove slide function to remove the white shoes from the shoe slideshow
-            </li>
-            <li>
-                <button id="random-btn">random</button>
-            </li>
-        </ul>
-    </div>
-
-    <div id="only-slideshow-div">
-        <h3>Only background slideshow example</h3>
-        You can also create a slideshow with only the background and no foreground slideshows:
-
-
-        <button id="autoscroll-btn"> autoscroll (2 secs)</button>
-    </div>
-
-    <div id="gift-section">
-        <h2>Gift Box slideshow example:</h2>
-        <ul>
-            <li>
-                You may use the outer arrows to change the gift box's colour
-            </li>
-            <li>
-                The colour of the crinkle packing paper can also be changed using the arrows to each side of it
-            </li>
-            <li>
-                The arrows in the 3 innermost item slideshows can be used to change the items
-                (bear, handkerchief, and cup) included in the gift box
-            </li>
-        </ul>
-
-        <div id="gift-slideshow-div"></div>
-    </div>
-    <div>
-        <h4>Additional Notes:</h4>
-        <i> images from:
+    <div id="example-page-main">
+        
+    
+        <div>
+            <h2>Overlay Slideshow Javascript Library examples</h2>
+            <i>note: some of the images might take a second to load</i>
+           <!-- <button id="testButton">test button(temp)</button> -->
+    
+        </div>
+    
+        <div id="test-div"></div>
+    
+        <div id="clothing-section">
+            <h2>Clothing slideshow example:</h2>
             <ul>
                 <li>
-                    <a href="https://unsplash.com/">unsplash.com</a>
+                    You may use the outer arrows to change the model's skin tone
                 </li>
                 <li>
-                    <a href="https://www.freeimages.com/ ">www.freeimages.com</a>
+                    The arrows in the 3 inner foreground slideshows can be used to change the shirt,bottom, and shoes on the model
                 </li>
                 <li>
-                    <a href="https://www.pexels.com/creative-commons-images/ ">www.pexels.com/creative-commons-images</a>
-                </li>
-                <li>
-                    <a href="https://purepng.com/">purepng.com</a>
+                    You may use the buttons below to edit the slideshow.
+                    <br>
+                    Refresh the page to reset to the default created in the javascript file.
                 </li>
             </ul>
-
-        </i>
+    
+            <div id="clothing-slideshow-div"></div>
+    
+            <h5> Buttons to edit the clothing slideshow:</h5>
+            <ul>
+                <li>
+                    <button id="order-fwd-btn">bottoms forward</button>
+                    <button id="order-back-btn">bottoms backwards</button>
+                    <br>
+                    These buttons utilize the orderForward() and orderBackward() functions to change the order of
+                    the bottoms(pants and skirts) slideshow above.
+                    <br>
+                    <i>note: the order is not relative to other layers so if you order a layer forward multiple times you must
+                        reorder it back multiple times to get the layer back to its original order</i>
+                    <br>
+                    For example, if you were to want the long pants to appear above the shoes, press the 'bottoms forward' button
+                    and to move it back, press the 'bottoms backwards' button.
+    
+                    <br>
+                </li>
+                <li>
+                    <button id="remove-shoe-btn">remove the white shoes from the slideshow</button>
+                    <br>
+                    This button utilizes the remove slide function to remove the white shoes from the shoe slideshow
+                </li>
+                <li>
+                    <button id="random-btn">random</button>
+                </li>
+            </ul>
+        </div>
+    
+        <div id="only-slideshow-div">
+            <h3>Only background slideshow example</h3>
+            You can also create a slideshow with only the background and no foreground slideshows:
+    
+    
+            <button id="autoscroll-btn"> autoscroll (2 secs)</button>
+        </div>
+    
+        <div id="gift-section">
+            <h2>Gift Box slideshow example:</h2>
+            <ul>
+                <li>
+                    You may use the outer arrows to change the gift box's colour
+                </li>
+                <li>
+                    The colour of the crinkle packing paper can also be changed using the arrows to each side of it
+                </li>
+                <li>
+                    The arrows in the 3 innermost item slideshows can be used to change the items
+                    (bear, handkerchief, and cup) included in the gift box
+                </li>
+            </ul>
+    
+            <div id="gift-slideshow-div"></div>
+        </div>
+        <div>
+            <h4>Additional Notes:</h4>
+            <i> images from:
+                <ul>
+                    <li>
+                        <a href="https://unsplash.com/">unsplash.com</a>
+                    </li>
+                    <li>
+                        <a href="https://www.freeimages.com/ ">www.freeimages.com</a>
+                    </li>
+                    <li>
+                        <a href="https://www.pexels.com/creative-commons-images/ ">www.pexels.com/creative-commons-images</a>
+                    </li>
+                    <li>
+                        <a href="https://purepng.com/">purepng.com</a>
+                    </li>
+                </ul>
+    
+            </i>
+        </div>
     </div>
+    
 
 
 </body>

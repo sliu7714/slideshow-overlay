@@ -3,10 +3,10 @@
 body{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
-    overflow: hidden; // TEMP
+    /* overflow: hidden; */
 }
 
-#landing-page{
+#landing-container{
     overflow: hidden;
 }
 
@@ -23,6 +23,13 @@ body{
 .header a{
     text-decoration: none;
     color: black;
+}
+.header :hover{
+    font-weight: 500;
+}
+
+.header .current-page{
+    font-weight: 500;
 }
 
 
@@ -43,10 +50,21 @@ body{
     margin: auto;
     pointer-events: none;
     z-index: 1000;
-    margin-top: 25vh;
+    margin-top: 30vh;
 }
 
-#subtitle-slideshow{
-    margin-top: 45vh;
-    margin-left: 40vh;
+
+/*for example file.*/
+#testDiv{
+    width: 400px;
+}
+button{
+    margin: 5px;
+}
+li{
+    margin-top: 10px;
+}
+#example-page-main{
+    overflow: scroll;
+    margin-left: 40px;;
 }
