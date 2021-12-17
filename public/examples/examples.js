@@ -105,7 +105,7 @@ const numBoxes = 6
 for (let i = 1; i <= numBoxes; i++){
     giftBoxSlides.push(new BackgroundSlide(`../images/gift/box/box${i}.png`, 'box', `gift-box${i}`))
 }
-const giftBoxSlideshow = new BackgroundSlideshow('gift-boxes-slideshow', giftBoxSlides, {height: "400px"})
+const giftBoxSlideshow = new BackgroundSlideshow('gift-boxes-slideshow', giftBoxSlides, {height: "400px", width: "400px;"})
 
 const giftPaperSlides = []
 const numPaper = 5
@@ -125,7 +125,7 @@ const numBear = 4
 for (let i = 0; i < numBear; i++){
     giftBearSlides.push(new ForegroundSlide(bearURLs[i], 'bear', `gift-bear${i}`))
 }
-const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', giftBearSlides, {height: "160px", marginLeft: "115px", })
+const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', giftBearSlides, {height: "160px", marginLeft: "125px", onlyShowArrowOnHover: true })
 
 
 const cupURLs = ['https://purepng.com/public/uploads/large/purepng.com-cupcupopen-containertablewarecarrying-drinksceramic-cup-1701528266244lgzbl.png',
@@ -137,7 +137,7 @@ const numCup = 3
 for (let i = 0; i < numCup; i++){
     giftCupSlides.push(new ForegroundSlide(cupURLs[i], 'cup', `gift-cup${i}`))
 }
-const giftCupSlideshow = new ForegroundSlideshow('gift-cup-slideshow', giftCupSlides, {height: "90px",marginTop: "145px", marginLeft: "150px" })
+const giftCupSlideshow = new ForegroundSlideshow('gift-cup-slideshow', giftCupSlides, {height: "90px",marginTop: "145px", marginLeft: "160px" , onlyShowArrowOnHover: true})
 
 const scarfURLs = ['https://purepng.com/public/uploads/large/simple-square-handkerchief-flu.png',
     'https://purepng.com/public/uploads/large/gingham-revolution-handkerchief-wxp.png',
@@ -149,7 +149,7 @@ const numScarf = 4
 for (let i = 0; i < numScarf; i++){
     giftScarfSlides.push(new ForegroundSlide(scarfURLs[i], 'scarf', `gift-scarf${i}`))
 }
-const giftScarfSlideshow = new ForegroundSlideshow('gift-scarf-slideshow', giftScarfSlides, {height: "110px", marginTop: "90px", marginLeft: "265px"})
+const giftScarfSlideshow = new ForegroundSlideshow('gift-scarf-slideshow', giftScarfSlides, {height: "110px", marginTop: "90px", marginLeft: "275px", onlyShowArrowOnHover: true})
 
 
 const giftSlideshowContainer = new SlideshowContainer('gift-slideshow-container', 'gift-slideshow-div', giftBoxSlideshow, giftPaperSlideshow)

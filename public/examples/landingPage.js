@@ -16,7 +16,7 @@ for (let i = 0; i < landingImageURLs.length; i++ ){
     landingSlides.push(new BackgroundSlide(landingImageURLs[i], 'nature image', `landing-slide${i}`))
 }
 // add slides to slideshow
-const landingSlideshow = new BackgroundSlideshow('landing-slideshow', landingSlides, {width: "100vw"})
+const landingSlideshow = new BackgroundSlideshow('landing-slideshow', landingSlides, {width: "100vw", autoScroll: 7000, hideArrows: true })
 
 
 const subtitles = [
@@ -28,13 +28,8 @@ const subtitleSlides = []
 for (let i = 0; i < subtitles.length; i++ ){
     subtitleSlides.push(new TextSlide(subtitles[i], '26px', `subtitle-slide${i}`))
 }
-const subtitleSlideshow = new ForegroundSlideshow('subtitle-slideshow', subtitleSlides, {})
+const subtitleSlideshow = new ForegroundSlideshow('subtitle-slideshow', subtitleSlides, {autoScroll: 5000, onlyShowArrowOnHover: true, width: "100vw", marginTop: "calc(30vh + 120px)" })
 
 
 const landingSlideshowContainer = new SlideshowContainer('landing-slideshow-container', 'landing-page-main', landingSlideshow, subtitleSlideshow)
 
-
-// auto-scroll
-landingSlideshow.addAutoScroll(7000)
-landingSlideshow.hideArrows()
-subtitleSlideshow.addAutoScroll(5000)

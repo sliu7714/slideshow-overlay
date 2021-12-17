@@ -27,7 +27,6 @@
     display: flex;
     justify-content: center;
     z-index: 200;
-    pointer-events: none; /* this allows for the background arrows to be clicked even if z-index is lower*/
 
 }
 .foreground-container{
@@ -56,7 +55,6 @@
     padding: 2px;
     pointer-events: visiblePainted;
 }
-
 /* this styling is to remove the blue overlay on images when clicking to select them */
 /* since it is often possible to mis-click an arrow and select the image instead so this just makes it look nicer*/
 .slideshows-container img {

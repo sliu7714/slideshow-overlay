@@ -85,7 +85,7 @@
                 $(this.slideShowContainer).css('width', `${options.width}`)
             }
             if (options.hideArrows){
-                this.hideArrows
+                this.hideArrows()
             }
             if(options.autoScroll){
                 this.addAutoScroll(options.autoScroll)
@@ -204,11 +204,24 @@
             if (options.marginTop){
                 
                 $(this.slideShowContainer).css('margin-top', options.marginTop)
-                console.log(options.marginTop, $(this.slideShowContainer).css('margin-top'), $(this.slideShowContainer))
             }
             if (options.marginLeft){
                 $(this.slideShowContainer).css('margin-left', options.marginLeft)
             }
+            if(options.onlyShowArrowOnHover){
+                // only for foreground slideshows 
+                $(this.slideShowContainer).css('pointer-events', 'all')
+                $(this.forwardArrow).hide()
+                $(this.backArrow).hide()
+                // only show arrows on hover
+                $(this.slideShowContainer).hover(function(){ 
+                    $(this.forwardArrow).toggle();
+                    $(this.backArrow).toggle();
+                }.bind(this))
+            }
+
+            
+
         }
 
         // move order of this slideshow forward
