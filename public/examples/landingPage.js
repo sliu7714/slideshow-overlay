@@ -16,8 +16,7 @@ for (let i = 0; i < landingImageURLs.length; i++ ){
     landingSlides.push(new BackgroundSlide(landingImageURLs[i], 'nature image', `landing-slide${i}`))
 }
 // add slides to slideshow
-const landingSlideshow = new BackgroundSlideshow('landing-slideshow','150vh', landingSlides[0])
-landingSlideshow.addSlides(landingSlides.slice(1))
+const landingSlideshow = new BackgroundSlideshow('landing-slideshow','150vh', landingSlides)
 
 
 const subtitles = [
@@ -29,8 +28,7 @@ const subtitleSlides = []
 for (let i = 0; i < subtitles.length; i++ ){
     subtitleSlides.push(new TextSlide(subtitles[i], '26px', `subtitle-slide${i}`))
 }
-const subtitleSlideshow = new ForegroundSlideshow('subtitle-slideshow','50px', subtitleSlides[0])
-subtitleSlideshow.addSlides(subtitleSlides.slice(1))
+const subtitleSlideshow = new ForegroundSlideshow('subtitle-slideshow','50px', subtitleSlides)
 
 
 const landingSlideshowContainer = new SlideshowContainer('landing-slideshow-container', 'landing-page-main', landingSlideshow, subtitleSlideshow)

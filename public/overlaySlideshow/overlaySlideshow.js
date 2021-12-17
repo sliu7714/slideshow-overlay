@@ -45,20 +45,24 @@
 
     class SlideShow{
         // later can add options for showing arrows(only one slide), size, etc?
-        constructor(id,height, firstSlide, slideshowClassName, slideContainerClassName ) {
+        constructor(id,height, slides, slideshowClassName, slideContainerClassName ) {
             // every slideshow must contain minimum one slide
-            this.slidesList = [firstSlide]
-            this.currentSlideIndex = 0  // index of the current slide being displayed
-            this.numSlides = 1
+            if (slides.length < 1){
+                throw "Every slideshow must contain at least one slide"
+            }
 
-            // not sure should autogenerate ids, but should at least check for uniqueness?
+            this.slidesList = [...slides]
+            this.currentSlideIndex = 0  // index of the current slide being displayed
+            this.numSlides = slides.length
+
             this.id = id
 
             // create html elements
             this.slideShowContainer = $(`<div class=${slideshowClassName} id=${this.id}>`)
             $(this.slideShowContainer).css('height', `${height}`)
             this.slidesContainer = $(`<div className=${slideContainerClassName} > `)
-            $(this.slidesContainer).append(firstSlide.element)
+            this.slidesList.forEach(slide =>{ $(this.slidesContainer).append(slide.element)}) // add all slide elements
+            $(this.slidesList[0].element).show() // show first slide
             this.forwardArrow = $(forwardArrowHtml)
             this.backArrow = $(backArrowHtml)
             $(this.slideShowContainer).append(this.backArrow)
@@ -165,8 +169,8 @@
 
     class BackgroundSlideshow extends SlideShow{
 
-        constructor(id, height, firstSlide) {
-            super(id, height, firstSlide,
+        constructor(id, height, slides) {
+            super(id, height, slides,
                 "background-slideshow",
                 "background-container")
         }
@@ -175,8 +179,8 @@
 
     class ForegroundSlideshow extends SlideShow{
 
-        constructor(id, height, firstSlide) {
-            super(id, height, firstSlide,
+        constructor(id, height, slides) {
+            super(id, height, slides,
                 "foreground-slideshow",
                 "foreground-container")
         }
@@ -196,13 +200,13 @@
 
     class Slide{
         constructor(src, alt, id, className) {
-
-            // html id of the background image element
-            // should check for uniqueness? or try catch? TODO
             this.id = id
 
-            // note this element is not added to the DOM yet
+            // note this element is not added to the DOM yet at the time of creation
             this.element = $(`<img class=${className} id=${this.id} src=${src} alt=${alt} >`)
+
+            // slide is default hidden 
+            $(this.element).hide()
         }
 
     }
@@ -211,8 +215,11 @@
         constructor(text, fontSize, id) {
             this.id = id
 
-            // note this element is not added to the DOM yet
+            // note this element is not added to the DOM yet at the time of creation
             this.element = $(`<div class="text-slide" id=${this.id} >${text}</>`)
+            
+            // slide is default hidden 
+            $(this.element).hide()
 
             $(this.element).css('font-size', fontSize)
         }
