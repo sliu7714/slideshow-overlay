@@ -58,19 +58,19 @@ class SlideShow{
         $(this.slideShowContainer).css('height', `${height}`)
         this.slidesContainer = $(`<div className=${slideContainerClassName} > `)
         $(this.slidesContainer).append(firstSlide.element)
-        const forwardArrow = $(forwardArrowHtml)
-        const backArrow = $(backArrowHtml)
-        $(this.slideShowContainer).append(backArrow)
+        this.forwardArrow = $(forwardArrowHtml)
+        this.backArrow = $(backArrowHtml)
+        $(this.slideShowContainer).append(this.backArrow)
         $(this.slideShowContainer).append(this.slidesContainer)
-        $(this.slideShowContainer).append(forwardArrow)
+        $(this.slideShowContainer).append(this.forwardArrow)
 
         $(this.slideShowContainer).css('pointer-events', 'none')
 
         // NOTE that this does not add element to DOM
 
         // add onClick events for the arrows
-        $(forwardArrow).click(() => {this.nextSlide()})
-        $(backArrow).click(() => {this.prevSlide()})
+        $(this.forwardArrow).click(() => {this.nextSlide()})
+        $(this.backArrow).click(() => {this.prevSlide()})
     }
 
     addSlide(slide){
@@ -152,6 +152,11 @@ class SlideShow{
     removeAutoScroll(){
         // stop automatically changing
         clearInterval(this.interval)
+    }
+
+    hideArrows(){
+        this.forwardArrow.hide()
+        this.backArrow.hide()
     }
 
 

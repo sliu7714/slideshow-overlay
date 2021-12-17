@@ -1,16 +1,42 @@
 
 
 
-const image1URL = 'https://images.unsplash.com/photo-1547103106-9a0e718bb2d2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=686&q=80'
-const image2URL = 'https://images.unsplash.com/photo-1548133650-7e2b96ebe5e6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=681&q=80'
-const image3URL = 'https://images.unsplash.com/photo-1536431311719-398b6704d4cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
+const landingImageURLs = [
+    'https://images.unsplash.com/photo-1639657742894-f77323974ed0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80',
+    'https://images.unsplash.com/photo-1635758242813-8513cb5a06ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1852&q=80',
+    'https://images.unsplash.com/photo-1559827291-72ee739d0d9a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1548&q=80',
+    'https://images.unsplash.com/photo-1636829092009-0d7f5723877a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80',
+    'https://images.unsplash.com/photo-1637295660413-2eb42a394d08?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
+    'https://images.unsplash.com/photo-1636850642710-6153d2e764e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80',
+    'https://images.unsplash.com/photo-1636455948165-15568156a647?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1742&q=80',
+]
+// make slides
+const landingSlides = []
+for (let i = 0; i < landingImageURLs.length; i++ ){
+    landingSlides.push(new BackgroundSlide(landingImageURLs[i], 'nature image', `landing-slide${i}`))
+}
+// add slides to slideshow
+const landingSlideshow = new BackgroundSlideshow('landing-slideshow','150vh', landingSlides[0])
+landingSlideshow.addSlides(landingSlides.slice(1))
 
-const bg1 = new BackgroundSlide(image1URL, 'image 1', 'bg_10')
-const bg2 = new BackgroundSlide(image2URL, 'image 2', 'bg_11')
-const bg3 = new BackgroundSlide(image3URL, 'image 3', 'bg_12')
 
-const bgSlideshow = new BackgroundSlideshow('bg-slideshow','500px', bg1)
-bgSlideshow.addSlide(bg2)
-bgSlideshow.addSlide(bg3)
+const subtitles = [
+    'Create and style slideshows overlaid on top of one another',
+    'Subtitle2',
+    'Subtitle3',
+]
+const subtitleSlides = []
+for (let i = 0; i < subtitles.length; i++ ){
+    subtitleSlides.push(new TextSlide(subtitles[i], '26px', `subtitle-slide${i}`))
+}
+const subtitleSlideshow = new ForegroundSlideshow('subtitle-slideshow','50px', subtitleSlides[0])
+subtitleSlideshow.addSlides(subtitleSlides.slice(1))
 
-const onlyBgSlideshowContainer = new SlideshowContainer('only-bg-slideshow-container', 'only-slideshow-div', bgSlideshow)
+
+const landingSlideshowContainer = new SlideshowContainer('landing-slideshow-container', 'landing-page-main', landingSlideshow, subtitleSlideshow)
+
+
+// autoscroll
+landingSlideshow.addAutoScroll(7000)
+landingSlideshow.hideArrows()
+subtitleSlideshow.addAutoScroll(7000)
