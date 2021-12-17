@@ -3,8 +3,45 @@
 (function(global, document, $) { 
 
     // these svgs are from iconmonstr.com
-    const forwardArrowHtml = `<svg class="forward-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>`
-    const backArrowHtml = `<svg class="back-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>`
+    // const forwardArrowHtmls = [
+    //     `<svg class="forward-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>`
+    // ]
+    // const backArrowHtml = `<svg class="back-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>`
+
+    const getForwardArrowHtml = (variant, color) =>{
+        const colorToUse = color ? color: "black"
+        switch(variant){
+            case 1:
+                return `<svg class="forward-arrow" fill=${colorToUse} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>`
+                break;
+            case 2:
+                return `<svg class="forward-arrow" fill=${colorToUse} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.568 18.005l-1.414-1.415 4.574-4.59-4.574-4.579 1.414-1.416 5.988 5.995-5.988 6.005z"/></svg>`
+                break;
+            case 3:
+                return `<svg class="forward-arrow" fill=${colorToUse} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 12l-18 12v-24z"/></svg>`
+                break;
+            default:
+                return `<svg class="forward-arrow" fill=${colorToUse} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>`
+
+        }
+    }
+
+    const getBackArrowHtml = (variant, color) =>{
+        const colorToUse = color ? color: "black"
+        switch(variant){
+            case 1:
+                return `<svg class="back-arrow" fill=${colorToUse} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>`
+                break;
+            case 2:
+                return `<svg class="back-arrow" fill=${colorToUse} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm7.58 0l5.988-5.995 1.414 1.416-4.574 4.579 4.574 4.59-1.414 1.416-5.988-6.006z"/></svg>`
+                break;
+            case 3:
+                return `<svg class="back-arrow" fill=${colorToUse} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M3 12l18-12v24z"/></svg>`
+                break;
+            default:
+                return `<svg class="back-arrow" fill=${colorToUse} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"/></svg>`
+        }
+    }
 
     class SlideshowContainer {
         constructor(id, containerID, backgroundSlideshow, foregroundSlideshow ) {
@@ -62,8 +99,8 @@
             this.slidesContainer = $(`<div className=${slideContainerClassName} > `)
             this.slidesList.forEach(slide =>{ $(this.slidesContainer).append(slide.element)}) // add all slide elements
             $(this.slidesList[0].element).show() // show first slide
-            this.forwardArrow = $(forwardArrowHtml)
-            this.backArrow = $(backArrowHtml)
+            this.forwardArrow = $(getForwardArrowHtml(options.arrowVariant, options.arrowColor))
+            this.backArrow = $(getBackArrowHtml(options.arrowVariant, options.arrowColor))
             $(this.slideShowContainer).append(this.backArrow)
             $(this.slideShowContainer).append(this.slidesContainer)
             $(this.slideShowContainer).append(this.forwardArrow)

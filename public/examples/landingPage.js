@@ -28,7 +28,7 @@ const subtitleSlides = []
 for (let i = 0; i < subtitles.length; i++ ){
     subtitleSlides.push(new TextSlide(subtitles[i], '26px', `subtitle-slide${i}`))
 }
-const subtitleSlideshow = new ForegroundSlideshow('subtitle-slideshow', subtitleSlides, {autoScroll: 5000, onlyShowArrowOnHover: true, width: "100vw", marginTop: "calc(30vh + 120px)" })
+const subtitleSlideshow = new ForegroundSlideshow('subtitle-slideshow', subtitleSlides, {autoScroll: 5000, onlyShowArrowOnHover: true, width: "100vw", marginTop: "calc(30vh + 120px)", arrowVariant: 3,  arrowColor: "white" })
 
 
 const landingSlideshowContainer = new SlideshowContainer('landing-slideshow-container', 'landing-page-main', landingSlideshow, subtitleSlideshow)
