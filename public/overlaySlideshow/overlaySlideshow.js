@@ -143,6 +143,17 @@ class SlideShow{
         }
     }
 
+    addAutoScroll(milliseconds){
+        this.interval = setInterval(function () {
+            this.nextSlide()
+        }.bind(this), milliseconds)
+    }
+
+    removeAutoScroll(){
+        // stop automatically changing
+        clearInterval(this.interval)
+    }
+
 
 }
 

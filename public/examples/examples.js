@@ -27,6 +27,20 @@ textSlideshow.addSlide(textSlide2)
 onlyBgSlideshowContainer.addForegroundSlideshow(textSlideshow)
 
 
+let isAutoScroll = false
+$('#autoscroll-btn').click(()=>{
+    if (isAutoScroll){
+        bgSlideshow.removeAutoScroll()
+    }
+    else{
+        bgSlideshow.addAutoScroll(2000)
+    }
+
+    isAutoScroll = !isAutoScroll
+    
+})
+
+
 // ---------------------------END ONLY BACKGROUND SLIDE EXAMPLE-----------------------------
 
 
