@@ -11,7 +11,7 @@ const bg1 = new BackgroundSlide(image1URL, 'image 1', 'bg_10')
 const bg2 = new BackgroundSlide(image2URL, 'image 2', 'bg_11')
 const bg3 = new BackgroundSlide(image3URL, 'image 3', 'bg_12')
 
-const bgSlideshow = new BackgroundSlideshow('bg-slideshow','500px', [bg1, bg2, bg3])
+const bgSlideshow = new BackgroundSlideshow('bg-slideshow', [bg1, bg2, bg3],  {height: "500px", width: "500px"})
 
 const onlyBgSlideshowContainer = new SlideshowContainer('only-bg-slideshow-container', 'only-slideshow-div', bgSlideshow)
 
@@ -19,7 +19,7 @@ const onlyBgSlideshowContainer = new SlideshowContainer('only-bg-slideshow-conta
 const textSlide1 = new TextSlide( "this is test1", 20, 'ts_1')
 const textSlide2 = new TextSlide( "this is test2", 20, 'ts_2')
 
-const textSlideshow = new ForegroundSlideshow('text-slide', '100px', [textSlide1, textSlide2] )
+const textSlideshow = new ForegroundSlideshow('text-slide', [textSlide1, textSlide2], {height: "100px"} )
 
 onlyBgSlideshowContainer.addForegroundSlideshow(textSlideshow)
 
@@ -51,7 +51,7 @@ const numClothesBgSlides = 7
 for (let i = 1; i <= numClothesBgSlides; i++){
     clothesBgSlides.push(new BackgroundSlide(`../images/clothes/bg/bg${i}.png`, 'person outline', `clothing-bg${i}`))
 }
-const clothesBgSlideshow = new BackgroundSlideshow('clothes-bg-slideshow', '500px', clothesBgSlides)
+const clothesBgSlideshow = new BackgroundSlideshow('clothes-bg-slideshow', clothesBgSlides, {height: "500px"})
 
 // foreground:
 const clothesTopsSlides = []
@@ -59,20 +59,20 @@ const numTops = 8
 for (let i = 1; i <= numTops; i++){
     clothesTopsSlides.push(new ForegroundSlide(`../images/clothes/tops/top${i}.png`, 'shirt', `clothing-top${i}`))
 }
-const clothesTopsSlideshow = new ForegroundSlideshow('clothes-tops-slideshow', '145px', clothesTopsSlides)
+const clothesTopsSlideshow = new ForegroundSlideshow('clothes-tops-slideshow', clothesTopsSlides,{height: "145px", marginTop: "100px", marginLeft: "40px" })
 const clothesBottomsSlides = []
 const numBottoms = 5
 for (let i = 1; i <= numBottoms; i++){
     clothesBottomsSlides.push(new ForegroundSlide(`../images/clothes/bottoms/bottom${i}.png`, 'clothing bottom', `clothing-bottom${i}`))
 }
-const clothesBottomsSlideshow = new ForegroundSlideshow('clothes-bottoms-slideshow', '245px', clothesBottomsSlides)
+const clothesBottomsSlideshow = new ForegroundSlideshow('clothes-bottoms-slideshow', clothesBottomsSlides, {height: "245px", marginTop: "200px", marginLeft: "38px"})
 
 const clothesShoesSlides = []
 const numShoes = 3
 for (let i = 1; i <= numShoes; i++){
     clothesShoesSlides.push(new ForegroundSlide(`../images/clothes/shoes/shoe${i}.png`, 'shoe', `clothing-shoe${i}`))
 }
-const clothesShoesSlideshow = new ForegroundSlideshow('clothes-shoes-slideshow', '150px', clothesShoesSlides)
+const clothesShoesSlideshow = new ForegroundSlideshow('clothes-shoes-slideshow', clothesShoesSlides, {height: "150px", marginTop: "350px", marginLeft: "40px"})
 
 // container for bg and foreground:
 const clothesSlideshowContainer = new SlideshowContainer('clothes-slideshow-container', 'clothing-slideshow-div', clothesBgSlideshow, clothesTopsSlideshow)
@@ -105,14 +105,14 @@ const numBoxes = 6
 for (let i = 1; i <= numBoxes; i++){
     giftBoxSlides.push(new BackgroundSlide(`../images/gift/box/box${i}.png`, 'box', `gift-box${i}`))
 }
-const giftBoxSlideshow = new BackgroundSlideshow('gift-boxes-slideshow', '400px', giftBoxSlides)
+const giftBoxSlideshow = new BackgroundSlideshow('gift-boxes-slideshow', giftBoxSlides, {height: "400px"})
 
 const giftPaperSlides = []
 const numPaper = 5
 for (let i = 1; i <= numPaper; i++){
     giftPaperSlides.push(new ForegroundSlide(`../images/gift/paper/paper${i}.png`, 'crinkle packing paper', `gift-paper${i}`))
 }
-const giftPaperSlideshow = new ForegroundSlideshow('gift-paper-slideshow', '300px', giftPaperSlides)
+const giftPaperSlideshow = new ForegroundSlideshow('gift-paper-slideshow', giftPaperSlides, {height: "300px", marginLeft: "60px"})
 
 
 const bearURLs = ['https://purepng.com/public/uploads/large/purepng.com-teddy-bearobjectstoybearteddy-beardoll-631521882725jykyi.png',
@@ -125,7 +125,7 @@ const numBear = 4
 for (let i = 0; i < numBear; i++){
     giftBearSlides.push(new ForegroundSlide(bearURLs[i], 'bear', `gift-bear${i}`))
 }
-const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', '160px', giftBearSlides)
+const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', giftBearSlides, {height: "160px", marginLeft: "115px", })
 
 
 const cupURLs = ['https://purepng.com/public/uploads/large/purepng.com-cupcupopen-containertablewarecarrying-drinksceramic-cup-1701528266244lgzbl.png',
@@ -137,7 +137,7 @@ const numCup = 3
 for (let i = 0; i < numCup; i++){
     giftCupSlides.push(new ForegroundSlide(cupURLs[i], 'cup', `gift-cup${i}`))
 }
-const giftCupSlideshow = new ForegroundSlideshow('gift-cup-slideshow', '90px', giftCupSlides)
+const giftCupSlideshow = new ForegroundSlideshow('gift-cup-slideshow', giftCupSlides, {height: "90px",marginTop: "145px", marginLeft: "150px" })
 
 const scarfURLs = ['https://purepng.com/public/uploads/large/simple-square-handkerchief-flu.png',
     'https://purepng.com/public/uploads/large/gingham-revolution-handkerchief-wxp.png',
@@ -149,7 +149,7 @@ const numScarf = 4
 for (let i = 0; i < numScarf; i++){
     giftScarfSlides.push(new ForegroundSlide(scarfURLs[i], 'scarf', `gift-scarf${i}`))
 }
-const giftScarfSlideshow = new ForegroundSlideshow('gift-scarf-slideshow', '110px', giftScarfSlides)
+const giftScarfSlideshow = new ForegroundSlideshow('gift-scarf-slideshow', giftScarfSlides, {height: "110px", marginTop: "90px", marginLeft: "265px"})
 
 
 const giftSlideshowContainer = new SlideshowContainer('gift-slideshow-container', 'gift-slideshow-div', giftBoxSlideshow, giftPaperSlideshow)

@@ -16,25 +16,25 @@ for (let i = 0; i < landingImageURLs.length; i++ ){
     landingSlides.push(new BackgroundSlide(landingImageURLs[i], 'nature image', `landing-slide${i}`))
 }
 // add slides to slideshow
-const landingSlideshow = new BackgroundSlideshow('landing-slideshow','150vh', landingSlides)
+const landingSlideshow = new BackgroundSlideshow('landing-slideshow', landingSlides, {width: "100vw"})
 
 
 const subtitles = [
     'Create and style slideshows overlaid on top of one another',
-    'Subtitle2',
-    'Subtitle3',
+    'Customize the styles and positioning',
+    'See more on the examples page',
 ]
 const subtitleSlides = []
 for (let i = 0; i < subtitles.length; i++ ){
     subtitleSlides.push(new TextSlide(subtitles[i], '26px', `subtitle-slide${i}`))
 }
-const subtitleSlideshow = new ForegroundSlideshow('subtitle-slideshow','50px', subtitleSlides)
+const subtitleSlideshow = new ForegroundSlideshow('subtitle-slideshow', subtitleSlides, {})
 
 
 const landingSlideshowContainer = new SlideshowContainer('landing-slideshow-container', 'landing-page-main', landingSlideshow, subtitleSlideshow)
 
 
-// autoscroll
+// auto-scroll
 landingSlideshow.addAutoScroll(7000)
 landingSlideshow.hideArrows()
-subtitleSlideshow.addAutoScroll(7000)
+subtitleSlideshow.addAutoScroll(5000)

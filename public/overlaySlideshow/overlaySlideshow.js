@@ -45,7 +45,7 @@
 
     class SlideShow{
         // later can add options for showing arrows(only one slide), size, etc?
-        constructor(id,height, slides, slideshowClassName, slideContainerClassName ) {
+        constructor(id, slides, options, slideshowClassName, slideContainerClassName ) {
             // every slideshow must contain minimum one slide
             if (slides.length < 1){
                 throw "Every slideshow must contain at least one slide"
@@ -59,7 +59,6 @@
 
             // create html elements
             this.slideShowContainer = $(`<div class=${slideshowClassName} id=${this.id}>`)
-            $(this.slideShowContainer).css('height', `${height}`)
             this.slidesContainer = $(`<div className=${slideContainerClassName} > `)
             this.slidesList.forEach(slide =>{ $(this.slidesContainer).append(slide.element)}) // add all slide elements
             $(this.slidesList[0].element).show() // show first slide
@@ -76,6 +75,23 @@
             // add onClick events for the arrows
             $(this.forwardArrow).click(() => {this.nextSlide()})
             $(this.backArrow).click(() => {this.prevSlide()})
+
+
+            // handle options
+            if (options.height){
+                $(this.slideShowContainer).css('height', `${options.height}`)
+            }
+            if (options.width){
+                $(this.slideShowContainer).css('width', `${options.width}`)
+            }
+            if (options.hideArrows){
+                this.hideArrows
+            }
+            if(options.autoScroll){
+                this.addAutoScroll(options.autoScroll)
+            }
+            
+
         }
 
         addSlide(slide){
@@ -169,8 +185,8 @@
 
     class BackgroundSlideshow extends SlideShow{
 
-        constructor(id, height, slides) {
-            super(id, height, slides,
+        constructor(id, slides, options) {
+            super(id, slides, options,
                 "background-slideshow",
                 "background-container")
         }
@@ -179,10 +195,20 @@
 
     class ForegroundSlideshow extends SlideShow{
 
-        constructor(id, height, slides) {
-            super(id, height, slides,
+        constructor(id, slides, options) {
+            super(id, slides, options,
                 "foreground-slideshow",
                 "foreground-container")
+
+            // handle options
+            if (options.marginTop){
+                
+                $(this.slideShowContainer).css('margin-top', options.marginTop)
+                console.log(options.marginTop, $(this.slideShowContainer).css('margin-top'), $(this.slideShowContainer))
+            }
+            if (options.marginLeft){
+                $(this.slideShowContainer).css('margin-left', options.marginLeft)
+            }
         }
 
         // move order of this slideshow forward
