@@ -52,12 +52,12 @@ $('#toggle-text-slideshow').click(function(){
     if (!isTextSlideshowAdded){
         // add slideshow to the slideshow container
         simpleExampleSlideshowContainer.addForegroundSlideshow(textSlideshow)
-        $(this).html('Add foreground text slideshow')
+        $(this).html('Remove foreground text slideshow')
     }
     else{
         // remove slideshow from the slideshow container
         simpleExampleSlideshowContainer.removeForegroundSlideshow(textSlideshow)
-        $(this).html('Remove foreground text slideshow')
+        $(this).html('Add foreground text slideshow')
     }
     isTextSlideshowAdded = !isTextSlideshowAdded
 })
@@ -165,20 +165,19 @@ $('#random-shirt-btn').click(()=>{
 // --------------------------------END CLOTHES SLIDESHOW--------------------------------
 
 // --------------------------------GIFT SLIDESHOW--------------------------------
-// BACKGROUND SLIDE
 const giftBoxSlides = []
 const numBoxes = 6
 for (let i = 1; i <= numBoxes; i++){
     giftBoxSlides.push(new BackgroundSlide(`../images/gift/box/box${i}.png`, 'box', `gift-box${i}`))
 }
-const giftBoxSlideshow = new BackgroundSlideshow('gift-boxes-slideshow', giftBoxSlides, {height: "400px", width: "400px;"})
+const giftBoxSlideshow = new BackgroundSlideshow('gift-boxes-slideshow', giftBoxSlides, {height: "500px"})
 
 const giftPaperSlides = []
 const numPaper = 5
 for (let i = 1; i <= numPaper; i++){
     giftPaperSlides.push(new ForegroundSlide(`../images/gift/paper/paper${i}.png`, 'crinkle packing paper', `gift-paper${i}`))
 }
-const giftPaperSlideshow = new ForegroundSlideshow('gift-paper-slideshow', giftPaperSlides, {height: "300px", marginLeft: "60px", arrowVariant: 2, arrowColor: "tomato"})
+const giftPaperSlideshow = new ForegroundSlideshow('gift-paper-slideshow', giftPaperSlides, {height: "373px", marginLeft: "76px", arrowVariant: 2, arrowColor: "#ff6347"})
 
 
 const bearURLs = ['https://purepng.com/public/uploads/large/purepng.com-teddy-bearobjectstoybearteddy-beardoll-631521882725jykyi.png',
@@ -190,7 +189,7 @@ const giftBearSlides = []
 for (let i = 0; i < bearURLs.length; i++){
     giftBearSlides.push(new ForegroundSlide(bearURLs[i], 'bear', `gift-bear${i}`))
 }
-const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', giftBearSlides, {height: "160px", marginLeft: "135px", onlyShowArrowOnHover: true , arrowVariant: 3, arrowColor: "deepskyblue"})
+const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', giftBearSlides, {height: "180px", marginLeft: "190px", onlyShowArrowOnHover: true , arrowVariant: 3, arrowColor: "deepskyblue"})
 
 
 const scarfURLs = ['https://purepng.com/public/uploads/large/simple-square-handkerchief-flu.png',
@@ -202,7 +201,7 @@ const giftScarfSlides = []
 for (let i = 0; i < scarfURLs.length; i++){
     giftScarfSlides.push(new ForegroundSlide(scarfURLs[i], 'scarf', `gift-scarf${i}`))
 }
-const giftScarfSlideshow = new ForegroundSlideshow('gift-scarf-slideshow', giftScarfSlides, {height: "110px", marginTop: "80px", marginLeft: "285px", onlyShowArrowOnHover: true,  arrowVariant: 3, arrowColor: "hotpink"})
+const giftScarfSlideshow = new ForegroundSlideshow('gift-scarf-slideshow', giftScarfSlides, {height: "120px", marginTop: "110px", marginLeft: "380px", onlyShowArrowOnHover: true,  arrowVariant: 3, arrowColor: "hotpink"})
 
 
 const cupURLs = ['https://purepng.com/public/uploads/large/purepng.com-cupcupopen-containertablewarecarrying-drinksceramic-cup-1701528266244lgzbl.png',
@@ -213,7 +212,7 @@ const giftCupSlides = []
 for (let i = 0; i < cupURLs.length; i++){
     giftCupSlides.push(new ForegroundSlide(cupURLs[i], 'cup', `gift-cup${i}`))
 }
-const giftCupSlideshow = new ForegroundSlideshow('gift-cup-slideshow', giftCupSlides, {height: "90px",marginTop: "145px", marginLeft: "160px" , onlyShowArrowOnHover: true, arrowVariant: 3, arrowColor: "greenyellow"})
+const giftCupSlideshow = new ForegroundSlideshow('gift-cup-slideshow', giftCupSlides, {height: "110px",marginTop: "190px", marginLeft: "240px" , onlyShowArrowOnHover: true, arrowVariant: 3, arrowColor: "greenyellow"})
 
 const giftSlideshowContainer = new SlideshowContainer('gift-slideshow-container', 'gift-slideshow-div', giftBoxSlideshow, giftPaperSlideshow)
 giftSlideshowContainer.addForegroundSlideshow(giftBearSlideshow)
