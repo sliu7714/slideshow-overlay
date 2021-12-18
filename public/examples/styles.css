@@ -5,10 +5,7 @@ body{
     margin: 0px;
 }
 
-body#landing-page{
-    overflow: hidden;
-}
-
+/* ____________________HEADER _____________________*/
 .header{
     display: flex;
     justify-content: space-around;
@@ -18,7 +15,6 @@ body#landing-page{
     height: 40px;
     align-items: center;
 }
-
 .header a{
     text-decoration: none;
     color: black;
@@ -26,20 +22,20 @@ body#landing-page{
 .header :hover{
     font-weight: 500;
 }
-
 .header .current-page{
     font-weight: 500;
 }
 
-
+/* ____________________LANDING PAGE _____________________*/
+body#landing-page{
+    overflow: hidden;
+}
 #landing-page-main{
     text-shadow: -1px 1px 2px black;
     color: white;
-    /* overflow: hidden; */
     max-height: 100%;
     overflow: hidden;
 }
-
 #title {
     position: absolute;
     font-size: 80px;
@@ -53,9 +49,10 @@ body#landing-page{
 }
 
 
-/*for example page.*/
-#testDiv{
-    width: 400px;
+/* ____________________ EXAMPLE PAGE _____________________*/
+#example-page-main{
+    margin-left: 40px;
+    margin-bottom: 50px;
 }
 button{
     margin: 5px;
@@ -74,10 +71,7 @@ button:active{
     background-color: #E5E4E4;
     color: #5a1717;
 }
-#example-page-main{
-    margin-left: 40px;
-    margin-bottom: 50px;
-}
+
 .example-subtitle{
     margin-bottom: 10px; 
 }
@@ -92,6 +86,7 @@ h3{
     margin-bottom: 2px;
     margin-top: 8px;
 }
+
 pre{
     margin: 0px;
     margin-top: 5px;
@@ -108,6 +103,7 @@ pre{
 .wider-code{
     max-width: calc(100vw - 100px);
 }
+
 ul{
     margin: 4px auto;
 }
@@ -130,7 +126,6 @@ ul{
 #img-source-links{
     display: flex;
     justify-content: flex-start;
-
     font-size: 14px;
     margin-bottom: 20px;
 }
@@ -142,33 +137,60 @@ ul{
     margin-left: 10px;
 }
 
-
-/* for docuentation page */
+/* ____________________ DOCUMENTATION PAGE _____________________*/
 #documentation-body{
     margin: 50px;
     margin-right: 200px;
 }
 table{
-    width: 90vw;
+    width: 80vw;
     text-align: left;
+    border-collapse: collapse;
+}
+tr{
+    border-top: 1px solid gray;
 }
 th{
     color: #5a1717;
 }
+#constructors table{
+    max-width: 800px;
+    text-align: left;
+}
+#constructors td{
+    padding: 8px 20px;
+}
+.param{
+    color: #5a1717;
+    font-weight: 500;
+}
+#constructors a{
+    text-decoration: none;
+    font-weight: 500;
+    color: black
+}
 .note{
    display: inline;
 }
-.reg-whitespace{
-    white-space:normal;
+
+b{
+    font-weight: 500;
 }
-#methods h3, #constructors h3{
+.param-title{
+    margin-top: 10px;
+    font-weight: 500;
+}
+#methods h3, #constructors h2{
     margin-bottom: 4px;
     color: #5a1717;
-    margin-top: 14px;
+    margin-top: 20px;
 }
 #methods h2{
     margin-bottom: 4px;
 }
 .italic{
     font-style: italic;
+}
+.dark-red{
+    color: #5a1717;
 }

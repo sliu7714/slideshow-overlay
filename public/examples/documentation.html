@@ -85,26 +85,240 @@
         <div id="constructors">
             <h1>Constructors</h1>
             
-            <h3>BackgroundSlide(alt, src, id)</h3>
+            <h2>BackgroundSlide(alt, src, id)</h2>
+            Create a new background image slide to be used in a BackgroundSlideshow.
+            <br>
+            Does <b>not</b> add this slide to the DOM
+            <br>
+            
+            <div class="param-title">Parameters</div>
+            <table>
+                <tr>
+                    <td class="param">
+                        alt
+                    </td>
+                    <td>
+                        the alt text of the slide image
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        src
+                    </td>
+                    <td>
+                        the link to the image to use for this slide
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        id
+                    </td>
+                    <td>
+                        the id to use for this slide, this id will also be used for the html element corresponding to this slide
+                    </td>
+                </tr>
+            </table>
 
-            <h3>ForegroundSlide(alt, src, id)</h3>
 
-            <h3>TextSlide(text, fontSize, id)</h3>
+            <h2>ForegroundSlide(alt, src, id)</h2>
+            Create a new foreground image slide to be used in a ForegroundSlideshow.
+            <br>
+            Does <b>not</b> add this slide to the DOM
+            <br>
+            
+            <div class="param-title">Parameters</div>
+            <table>
+                <tr>
+                    <td class="param">
+                        alt
+                    </td>
+                    <td>
+                        the alt text of the slide image
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        src
+                    </td>
+                    <td>
+                        the link to the image to use for this slide
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        id
+                    </td>
+                    <td>
+                        the id to use for this slide, this id will also be used for the html element corresponding to this slide
+                    </td>
+                </tr>
+            </table>
+
+            <h2>TextSlide(text, fontSize, id)</h2>
+            Create a new foreground text slide to be used in a ForegroundSlideshow.
+            <br>
+            Does <b>not</b> add this slide to the DOM
+            <br>
+            
+            <div class="param-title">Parameters</div>
+            <table>
+                <tr>
+                    <td class="param">
+                        text
+                    </td>
+                    <td>
+                        the text to use inside the slide
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        fontSize
+                    </td>
+                    <td>
+                        the size of the font to use in this slide
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        id
+                    </td>
+                    <td>
+                        the id to use for this slide, this id will also be used for the html element corresponding to this slide
+                    </td>
+                </tr>
+            </table>
 
             
-            <h3>ForegroundSlideshow(id, slides, options))</h3>
+            <h2>ForegroundSlideshow(id, slides, options)</h2>
+            Create a new foreground slideshow that may contain either TextSlide or ForegroundSlide instances
+            <br>
+            This slideshow must be added to a SlideshowContainer to be added to the DOM
+            <br>
+            
+            <div class="param-title">Parameters</div>
+            <table>
+                <tr>
+                    <td class="param">
+                        id
+                    </td>
+                    <td>
+                        the id to use for this slideshow, this id will also be used for the html element corresponding to this slideshow
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        slides
+                    </td>
+                    <td>
+                        a list of TextSlide or ForegroundSlide instances to be added to this slideshow
+                        <br>
+                        this list cannot be empty, every slideshow must contain at least one slide
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        options
+                    </td>
+                    <td>
+                        options to style/manipulate this slideshow, see the <a href="#options">options</a> section below for more information
+                    </td>
+                </tr>
+            </table>
 
-            <h3>BackgroundSlideshow(id, slides, options))</h3>
+            <h2>BackgroundSlideshow(id, slides, options)</h2>
+            Create a new background slideshow that contains BackgroundSlide instances
+            <br>
+            This slideshow must be added to a SlideshowContainer to be added to the DOM
+            <br>
+            
+            <div class="param-title">Parameters</div>
+            <table>
+                <tr>
+                    <td class="param">
+                        id
+                    </td>
+                    <td>
+                        the id to use for this slideshow, this id will also be used for the html element corresponding to this slideshow
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        slides
+                    </td>
+                    <td>
+                        a list of BackgroundSlide instances to be added to this slideshow
+                        <br>
+                        this list cannot be empty, every slideshow must contain at least one slide
+                        and the same slide instance cannot be a part of multiple slideshows
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        options
+                    </td>
+                    <td>
+                        options to style/manipulate this slideshow, see the <a href="#options">options</a> section below for more information
+                    </td>
+                </tr>
+            </table>
 
 
-            <h3>SlideshowContainer(id, containerID, backgroundSlideshow, foregroundSlideshow)</h3>
+            <h2>SlideshowContainer(id, containerID, backgroundSlideshow, foregroundSlideshow)</h2>
+            Create container to hold one BackgroundSlideshow and zero or more ForegroundSlideshows.
+            <br>
+            This will add the slideshows to the DOM
+            
+            <div class="param-title">Parameters</div>
+            <table>
+                <tr>
+                    <td class="param">
+                        id
+                    </td>
+                    <td>
+                        the id to use for this slideshow container,
+                        this id will also be used for the html element corresponding to this slideshow container
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        containerID
+                    </td>
+                    <td>
+                        the id of the html element to append this new slideshowContainer to
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        backgroundSlideshow
+                    </td>
+                    <td>
+                        The BackgroundSlideshow instance to add to this slideshow container
+                    </td>
+                </tr>
+                <tr>
+                    <td class="param">
+                        backgroundSlideshow
+                    </td>
+                    <td>
+                        (OPTIONAL)
+                        A ForegroundSlideshow instance to add to this slideshow container
+                    </td>
+                </tr>
+            </table>
+            Note that slideshow instances (ForegroundSlideshow or BackgroundSlideshow) cannot be added to more than one SlideshowContainer
 
 
 
         </div>
+
         <div id="options">
             <h1>Options </h1>
-            Attributes of the options parameter used when creating a new ForegroundSlideshow or BackgroundSlideshow
+            Options to be used for the <b class="dark-red">options</b> parameter
+            when creating a new ForegroundSlideshow or BackgroundSlideshow instance
+
+            <h3>
+                ForegroundSlideshow and BackgroundSlideshow options
+            </h3>
             
             <table>
                 <tr>
@@ -120,7 +334,10 @@
                 </tr>
             </table>
 
-            attributes of the options parameter used <b>only</b> when creating a new ForegroundSlideshow
+            <h3>
+                ForegroundSlideshow <b>only</b> options
+            </h3>
+            
 
         </div>
 
@@ -138,6 +355,8 @@
 
             <h3>.removeSlide(slide)</h3>
             Remove a slide from a slideshow, if the slide is not part of the slideshow or is the last slide in the slideshow, an error is thrown
+            <br>
+            Every slideshow must contain at least one slide
             
             <h3>.nextSlide()</h3>
             Move to the next slide in the slideshow, or the first slide if the current slide is the last
