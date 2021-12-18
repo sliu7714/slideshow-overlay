@@ -28,58 +28,12 @@
 
     <div id="example-page-main">
         
-    
-    
-        <div id="clothing-section">
-            <h2>Clothing slideshow example:</h2>
-            <ul>
-                <li>
-                    You may use the outer arrows to change the model's skin tone
-                </li>
-                <li>
-                    The arrows in the 3 inner foreground slideshows can be used to change the shirt,bottom, and shoes on the model
-                </li>
-                <li>
-                    You may use the buttons below to edit the slideshow.
-                    <br>
-                    Refresh the page to reset to the default created in the javascript file.
-                </li>
-            </ul>
-    
-            <div id="clothing-slideshow-div"></div>
-    
-            <h5> Buttons to edit the clothing slideshow:</h5>
-            <ul>
-                <li>
-                    <button id="order-fwd-btn">bottoms forward</button>
-                    <button id="order-back-btn">bottoms backwards</button>
-                    <br>
-                    These buttons utilize the orderForward() and orderBackward() functions to change the order of
-                    the bottoms(pants and skirts) slideshow above.
-                    <br>
-                    <i>note: the order is not relative to other layers so if you order a layer forward multiple times you must
-                        reorder it back multiple times to get the layer back to its original order</i>
-                    <br>
-                    For example, if you were to want the long pants to appear above the shoes, press the 'bottoms forward' button
-                    and to move it back, press the 'bottoms backwards' button.
-    
-                    <br>
-                </li>
-                <li>
-                    <button id="remove-shoe-btn">remove the white shoes from the slideshow</button>
-                    <br>
-                    This button utilizes the remove slide function to remove the white shoes from the shoe slideshow
-                </li>
-                <li>
-                    <button id="random-btn">random</button>
-                </li>
-            </ul>
-        </div>
-            
         <div id="simple-bg-ex" >
             <h1>Simple background slideshow</h1>
-            <li class="example-subtitle">Press the buttons to either side of the pictures to navigate through the slideshow</div>
-           
+            <ul>
+                <li class="example-subtitle">Press the buttons to either side of the pictures to navigate through the slideshow</div>
+            </ul>
+
             <div class="example-container">
                 <!-- container for slideshow container -->
                 <div id="simple-example-slideshow-div"></div>
@@ -148,7 +102,8 @@
                         There is the option to automatically change the slides for each slideshow.
                         <button class="code-btn" >Show Code</button>
                         <pre>
-                            <code>...
+                            <code>
+    ...
     // set auto scroll to change slide every 2 seconds
     bgSlideshow.addAutoScroll(2000)
     ...
@@ -167,11 +122,145 @@
                     </div>
 
                 </div>
-            </div>
         </div>
     
+        <div id="clothing-section">
+            <h1>Clothing Slideshow</h1>
+            This example shows more styling and options for slideshow objects
+            <button class="code-btn">Show Code</button>
+            <pre class="wider-code">
+                <code>
+    // BACKGROUND SLIDESHOW SETUP
+    const clothesBgSlides = []
+    const numClothesBgSlides = 7
+    // make background slide objects
+    for (let i = 1; i <= numClothesBgSlides; i++){
+        clothesBgSlides.push(new BackgroundSlide(`../images/clothes/bg/bg${i}.png`, 'person outline', `clothing-bg${i}`))
+    }
+    // make backgroundSlideshow
+    const clothesBgSlideshow = new BackgroundSlideshow('clothes-bg-slideshow', clothesBgSlides, {height: "500px"})
+    
+    // FOREGROUND SLIDESHOW SETUP
+    const clothesTopsSlides = []
+    const numTops = 8
+    for (let i = 1; i <= numTops; i++){
+        clothesTopsSlides.push(new ForegroundSlide(`../images/clothes/tops/top${i}.png`, 'shirt', `clothing-top${i}`))
+    }
+    const clothesTopsSlideshow = new ForegroundSlideshow('clothes-tops-slideshow', clothesTopsSlides,{height: "145px", marginTop: "100px", marginLeft: "40px" })
+    
+    const clothesBottomsSlides = []
+    const numBottoms = 5
+    for (let i = 1; i <= numBottoms; i++){
+        clothesBottomsSlides.push(new ForegroundSlide(`../images/clothes/bottoms/bottom${i}.png`, 'clothing bottom', `clothing-bottom${i}`))
+    }
+    const clothesBottomsSlideshow = new ForegroundSlideshow('clothes-bottoms-slideshow', clothesBottomsSlides, {height: "245px", marginTop: "200px", marginLeft: "38px"})
+    
+    const clothesShoesSlides = []
+    const numShoes = 3
+    for (let i = 1; i <= numShoes; i++){
+        clothesShoesSlides.push(new ForegroundSlide(`../images/clothes/shoes/shoe${i}.png`, 'shoe', `clothing-shoe${i}`))
+    }
+    const clothesShoesSlideshow = new ForegroundSlideshow('clothes-shoes-slideshow', clothesShoesSlides, {height: "150px", marginTop: "350px", marginLeft: "40px"})
+    
+    // Add foreground and background slideshows to DOM
+    const clothesSlideshowContainer = new SlideshowContainer('clothes-slideshow-container', 'clothing-slideshow-div', clothesBgSlideshow, clothesTopsSlideshow)
+    clothesSlideshowContainer.addForegroundSlideshow(clothesBottomsSlideshow)
+    clothesSlideshowContainer.addForegroundSlideshow(clothesShoesSlideshow)
+                </code>
+            </pre> 
+            <ul class="example-subtitle">
+                <li>
+                    You may use the outer arrows to change the model's skin tone
+                </li>
+                <li>
+                    The arrows in the 3 inner foreground slideshows can be used to change the shirt,bottom, and shoes on the model
+                </li>
+            </ul>
+
+
+            <div class="example-container">
+                <div id="clothing-slideshow-div"></div>
+                
+                <div id="clothing-desc">
+                    <div>
+                        <h3> Changing slides</h3>
+                        On top of being able to navigate to the next and previous slide, you may also navigate to a random slide in the slideshow.
+
+                        <br>
+                        Use the "random shirt" and "random outfit" buttons below to try it out: 
+                        <button class="code-btn" >Show Code</button>
+                        <pre>
+                            <code>
+    ...
+    // change a single slideshow to a random slide
+    clothesTopsSlideshow.randomSlide()
+    ...
+    // change all the slideshows in a slideshow container to a random slide
+    clothesSlideshowContainer.randomSlides()
+                            </code>
+                        </pre>
+                        <br>
+                        <button id="random-shirt-btn">random shirt</button>
+                        <button id="random-outfit-btn">random outfit</button>
+                        
+                    </div>
+                    
+                    <div>
+                        <h3>Changing layer orders</h3>
+                        There is the option to re-order the appearance of the ForegroundSlideshows in a SlideshowContainer 
+                        so that one slideshow appears to be in front of another. 
+                        <br>
+                        Use the buttons below to re-order the pants/skirt slideshow to appear below/above the other clothing slides
+                        <button class="code-btn" >Show Code</button>
+                        <pre>
+                            <code>
+    ...
+    // move skirt/pants slideshow forward one layer
+    clothesBottomsSlideshow.orderForward()
+    ...
+    // move skirt/pants slideshow backwards one layer
+    clothesBottomsSlideshow.orderBackward()
+
+    // NOTE: the order is not relative to other layers so if you move a slideshow a layer
+    //       forward multiple times you must reorder the slideshow back multiple times
+    //       to get the slideshow back to its original order
+                            </code>
+                        </pre>
+                        <br>
+                        <button id="order-fwd-btn">move skirt/pants forwards one layer</button>
+                        <button id="order-back-btn">move skirt/pants backwards one layer</button>
+                    </div>
+
+                    <div>
+                        <h3>Adding/Removing slides</h3>
+                        Slides may be added/removed after creating a slideshow.
+                        <br>
+                        Use the buttons below to try adding and removing a slide
+                        <button class="code-btn" >Show Code</button>
+                        <pre>
+                            <code>
+    ...
+    // create new slide for brown pants
+    const brownPantsSlide = new new ForegroundSlide(`../images/clothes/bottoms/bottom6.png`, 'brown pants', `clothing-bottom6`)
+    // add brown pants slide to bottoms slideshow
+    clothesBottomsSlideshow.addSlide(brownPantsSlide)
+    ...
+    // remove white shoes from shoe slideshow
+    clothesShoesSlideshow.removeSlide(whiteShoesSlide) 
+                            </code>
+                        </pre>
+                        <br>
+                        <button id="add-pants-btn">add a brown pants slide</button>
+                        <button id="remove-shoe-btn">remove the white shoes slide</button>
+                    </div>
+
+            </div>
+        </div>
+        
+    
         <div id="gift-section">
-            <h2>Gift Box slideshow example:</h2>
+            <h1>Gift Box Slideshow</h1>
+            This example shows the arrow styling.
             <ul>
                 <li>
                     You may use the outer arrows to change the gift box's colour

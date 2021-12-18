@@ -90,22 +90,24 @@ $('#autoscroll-btn').click(function(){
 
 
 // --------------------------------CLOTHES SLIDESHOW--------------------------------
-// background:
+// BACKGROUND SLIDESHOW SETUP
 const clothesBgSlides = []
 const numClothesBgSlides = 7
 // make background slide objects
 for (let i = 1; i <= numClothesBgSlides; i++){
     clothesBgSlides.push(new BackgroundSlide(`../images/clothes/bg/bg${i}.png`, 'person outline', `clothing-bg${i}`))
 }
+// make backgroundSlideshow
 const clothesBgSlideshow = new BackgroundSlideshow('clothes-bg-slideshow', clothesBgSlides, {height: "500px"})
 
-// foreground:
+// FOREGROUND SLIDESHOW SETUP
 const clothesTopsSlides = []
 const numTops = 8
 for (let i = 1; i <= numTops; i++){
     clothesTopsSlides.push(new ForegroundSlide(`../images/clothes/tops/top${i}.png`, 'shirt', `clothing-top${i}`))
 }
 const clothesTopsSlideshow = new ForegroundSlideshow('clothes-tops-slideshow', clothesTopsSlides,{height: "145px", marginTop: "100px", marginLeft: "40px" })
+
 const clothesBottomsSlides = []
 const numBottoms = 5
 for (let i = 1; i <= numBottoms; i++){
@@ -120,7 +122,7 @@ for (let i = 1; i <= numShoes; i++){
 }
 const clothesShoesSlideshow = new ForegroundSlideshow('clothes-shoes-slideshow', clothesShoesSlides, {height: "150px", marginTop: "350px", marginLeft: "40px"})
 
-// container for bg and foreground:
+// Add foreground and background slideshows to DOM
 const clothesSlideshowContainer = new SlideshowContainer('clothes-slideshow-container', 'clothing-slideshow-div', clothesBgSlideshow, clothesTopsSlideshow)
 clothesSlideshowContainer.addForegroundSlideshow(clothesBottomsSlideshow)
 clothesSlideshowContainer.addForegroundSlideshow(clothesShoesSlideshow)
@@ -128,20 +130,37 @@ clothesSlideshowContainer.addForegroundSlideshow(clothesShoesSlideshow)
 // buttons to show some additional functionality
 $('#order-fwd-btn').click(()=>{
     console.log('bottoms order forward')
+    // move skirt/pants slideshow forward one layer
     clothesBottomsSlideshow.orderForward()
 })
 $('#order-back-btn').click(()=>{
     console.log('bottoms order backwards')
+    // move skirt/pants slideshow backwards one layer
     clothesBottomsSlideshow.orderBackward()
 })
 $('#remove-shoe-btn').click(()=>{
     console.log('remove white shoes from shoe slideshow')
-    clothesShoesSlideshow.removeSlide(clothesShoesSlides[2])
+    const whiteShoesSlide = clothesShoesSlides[2]
+    // remove white shoes from shoe slideshow
+    clothesShoesSlideshow.removeSlide(whiteShoesSlide)
+})
+// create new slide for brown pants
+const brownPantsSlide = new ForegroundSlide(`../images/clothes/bottoms/bottom6.png`, 'brown pants', `clothing-bottom6`)
+$('#add-pants-btn').click(()=>{
+    console.log('add brown pants to bottoms slideshow')
+    // add brown pants slide to bottoms slideshow
+    clothesBottomsSlideshow.addSlide(brownPantsSlide)
 })
 
-$('#random-btn').click(()=>{
-    console.log('random slides clothes')
+$('#random-outfit-btn').click(()=>{
+    console.log('random slides outfit')
+    // change all the slideshows in a slideshow container to a random slide
     clothesSlideshowContainer.randomSlides()
+})
+$('#random-shirt-btn').click(()=>{
+    console.log('random slides shirt')
+    // change a single slideshow to a random slide
+    clothesTopsSlideshow.randomSlide()
 })
 // --------------------------------END CLOTHES SLIDESHOW--------------------------------
 
