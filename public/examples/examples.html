@@ -260,43 +260,161 @@
     
         <div id="gift-section">
             <h1>Gift Box Slideshow</h1>
-            This example shows the arrow styling.
+            This gift box example showcases more of the arrow styling options
             <ul>
                 <li>
-                    You may use the outer arrows to change the gift box's colour
+                    The outer black arrows will change the gift box's colour.
                 </li>
                 <li>
-                    The colour of the crinkle packing paper can also be changed using the arrows to each side of it
+                    The orange-red arrows will change the colour of the crinkle packing paper.
                 </li>
                 <li>
-                    The arrows in the 3 innermost item slideshows can be used to change the items
-                    (bear, handkerchief, and cup) included in the gift box
+                    Hovering your mouse over the items inside the box will reveal blue, pink and green arrows that
+                    will change the items (bear, handkerchief, and cup) included in the gift box.
                 </li>
             </ul>
-    
+
             <div id="gift-slideshow-div"></div>
-        </div>
-        <div>
-            <h4>Additional Notes:</h4>
-            <i> images from:
-                <ul>
-                    <li>
-                        <a href="https://unsplash.com/">unsplash.com</a>
-                    </li>
-                    <li>
-                        <a href="https://www.freeimages.com/ ">www.freeimages.com</a>
-                    </li>
-                    <li>
-                        <a href="https://www.pexels.com/creative-commons-images/ ">www.pexels.com/creative-commons-images</a>
-                    </li>
-                    <li>
-                        <a href="https://purepng.com/">purepng.com</a>
-                    </li>
-                </ul>
+
+            
+
+            <br>
+            Code with arrow styling options emphasized:
+                    <button class="code-btn" >Show Code</button>
+                    <pre class="wider-code">
+                        <code>
+    // see documentation page for more details about options
+
+    ... create gift box slides ...
+
+    // create gift box slideshow
+    const giftBoxSlideshow = new BackgroundSlideshow(
+        id='gift-boxes-slideshow',
+        slides=giftBoxSlides,
+        // not having any arrow styling options defaults to a black variant 1 arrow style
+        options={
+            height: "400px",
+            width: "400px;"
+        } 
+    )
     
-            </i>
+    ... create gift paper slides ...
+
+    // create gift paper slideshow
+    const giftPaperSlideshow = new ForegroundSlideshow(
+        id='gift-paper-slideshow', 
+        slides=giftPaperSlides, 
+        // the arrowVariant and arrowColor options set the gift paper slideshow to have round orange arrows 
+        options={
+            height: "300px", 
+            marginLeft: "60px", 
+            arrowVariant: 2,      // the variant style for the arrows
+            arrowColor: "#ff6347" // the color of the arrows
+        }
+    )
+    
+    ... create bear slides ...
+
+    // create teddy bear slideshow
+    const giftBearSlideshow = new ForegroundSlideshow(
+        id='gift-bear-slideshow', 
+        slides=giftBearSlides, 
+        // the arrowVariant and arrowColor options set the bear slideshow
+        // to have triangle blue arrows that only appear when hovering on the bear slideshow
+        options={
+            height: "160px", 
+            marginLeft: "135px", 
+            onlyShowArrowOnHover: true , // option to only show the arrow when hovering over the slideshow
+            arrowVariant: 3,             // the variant style for the arrows   
+            arrowColor: "deepskyblue"    // the color of the arrows
+        }
+    )
+    ... cont
+                        </code>
+                    </pre>
+
+                    
+                    <br>
+                    See the Full code:
+                    <button class="code-btn" >Show Code</button>
+                    <pre class="wider-code">
+                        <code>
+    const giftBoxSlides = []
+    const numBoxes = 6
+    for (let i = 1; i <= numBoxes; i++){
+        giftBoxSlides.push(new BackgroundSlide(`../images/gift/box/box${i}.png`, 'box', `gift-box${i}`))
+    }
+    const giftBoxSlideshow = new BackgroundSlideshow('gift-boxes-slideshow', giftBoxSlides, {height: "400px", width: "400px;"})
+    
+    const giftPaperSlides = []
+    const numPaper = 5
+    for (let i = 1; i <= numPaper; i++){
+        giftPaperSlides.push(new ForegroundSlide(`../images/gift/paper/paper${i}.png`, 'crinkle packing paper', `gift-paper${i}`))
+    }
+    const giftPaperSlideshow = new ForegroundSlideshow('gift-paper-slideshow', giftPaperSlides, {height: "300px", marginLeft: "60px", arrowVariant: 2, arrowColor: "#ff6347"})
+    
+    
+    const bearURLs = ['https://purepng.com/public/uploads/large/purepng.com-teddy-bearobjectstoybearteddy-beardoll-631521882725jykyi.png',
+        'https://purepng.com/public/uploads/large/pink-teddy-bear-y1k.png',
+        'https://purepng.com/public/uploads/large/purepng.com-teddy-bearobjectstoybearteddy-beardoll-631521882709zx0uu.png',
+        'https://purepng.com/public/uploads/large/purepng.com-teddy-bearobjectstoybearobjectdoll-63152188394154png.png'
+        ]
+    const giftBearSlides = []
+    for (let i = 0; i < bearURLs.length; i++){
+        giftBearSlides.push(new ForegroundSlide(bearURLs[i], 'bear', `gift-bear${i}`))
+    }
+    const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', giftBearSlides, {height: "160px", marginLeft: "135px", onlyShowArrowOnHover: true , arrowVariant: 3, arrowColor: "deepskyblue"})
+    
+    
+    const scarfURLs = ['https://purepng.com/public/uploads/large/simple-square-handkerchief-flu.png',
+        'https://purepng.com/public/uploads/large/gingham-revolution-handkerchief-wxp.png',
+        'https://purepng.com/public/uploads/large/white-hand-rolled-men-handkerchief-2o0.png',
+        'https://purepng.com/public/uploads/large/flowers-square-handkerchief-ksm.png',
+    ]
+    const giftScarfSlides = []
+    for (let i = 0; i < scarfURLs.length; i++){
+        giftScarfSlides.push(new ForegroundSlide(scarfURLs[i], 'scarf', `gift-scarf${i}`))
+    }
+    const giftScarfSlideshow = new ForegroundSlideshow('gift-scarf-slideshow', giftScarfSlides, {height: "110px", marginTop: "80px", marginLeft: "285px", onlyShowArrowOnHover: true,  arrowVariant: 3, arrowColor: "hotpink"})
+    
+    
+    const cupURLs = ['https://purepng.com/public/uploads/large/purepng.com-cupcupopen-containertablewarecarrying-drinksceramic-cup-1701528266244lgzbl.png',
+        'https://purepng.com/public/uploads/large/purepng.com-cupcupopen-containertablewarecarrying-drinksceramic-cup-1701528266193sfx1o.png',
+        'https://purepng.com/public/uploads/large/purepng.com-cup-mug-coffeecupmufcoffeebean-1411527406382vrz4g.png'
+        ]
+    const giftCupSlides = []
+    for (let i = 0; i < cupURLs.length; i++){
+        giftCupSlides.push(new ForegroundSlide(cupURLs[i], 'cup', `gift-cup${i}`))
+    }
+    const giftCupSlideshow = new ForegroundSlideshow('gift-cup-slideshow', giftCupSlides, {height: "90px",marginTop: "145px", marginLeft: "160px" , onlyShowArrowOnHover: true, arrowVariant: 3, arrowColor: "greenyellow"})
+    
+    const giftSlideshowContainer = new SlideshowContainer('gift-slideshow-container', 'gift-slideshow-div', giftBoxSlideshow, giftPaperSlideshow)
+    giftSlideshowContainer.addForegroundSlideshow(giftBearSlideshow)
+    giftSlideshowContainer.addForegroundSlideshow(giftCupSlideshow)
+    giftSlideshowContainer.addForegroundSlideshow(giftScarfSlideshow)
+                        </code>
+                    </pre>
+
+
+
         </div>
+
+
+
+        
     </div>
+    </div>
+
+    <footer>
+            <div id="img-source-links">
+                <span> Slideshow images from:</span>
+                <a href="https://unsplash.com/">unsplash.com</a>
+                <a href="https://www.freeimages.com/ ">www.freeimages.com</a>
+                <a href="https://www.pexels.com/creative-commons-images/ ">www.pexels.com/creative-commons-images</a>
+                <a href="https://purepng.com/">purepng.com</a>
+            </div>
+            
+    </footer>
     
 
 

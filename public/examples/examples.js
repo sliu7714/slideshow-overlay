@@ -165,6 +165,7 @@ $('#random-shirt-btn').click(()=>{
 // --------------------------------END CLOTHES SLIDESHOW--------------------------------
 
 // --------------------------------GIFT SLIDESHOW--------------------------------
+// BACKGROUND SLIDE
 const giftBoxSlides = []
 const numBoxes = 6
 for (let i = 1; i <= numBoxes; i++){
@@ -177,7 +178,7 @@ const numPaper = 5
 for (let i = 1; i <= numPaper; i++){
     giftPaperSlides.push(new ForegroundSlide(`../images/gift/paper/paper${i}.png`, 'crinkle packing paper', `gift-paper${i}`))
 }
-const giftPaperSlideshow = new ForegroundSlideshow('gift-paper-slideshow', giftPaperSlides, {height: "300px", marginLeft: "60px", arrowVariant: 2, arrowColor: "#343a40"})
+const giftPaperSlideshow = new ForegroundSlideshow('gift-paper-slideshow', giftPaperSlides, {height: "300px", marginLeft: "60px", arrowVariant: 2, arrowColor: "tomato"})
 
 
 const bearURLs = ['https://purepng.com/public/uploads/large/purepng.com-teddy-bearobjectstoybearteddy-beardoll-631521882725jykyi.png',
@@ -186,11 +187,10 @@ const bearURLs = ['https://purepng.com/public/uploads/large/purepng.com-teddy-be
     'https://purepng.com/public/uploads/large/purepng.com-teddy-bearobjectstoybearobjectdoll-63152188394154png.png'
     ]
 const giftBearSlides = []
-const numBear = 4
-for (let i = 0; i < numBear; i++){
+for (let i = 0; i < bearURLs.length; i++){
     giftBearSlides.push(new ForegroundSlide(bearURLs[i], 'bear', `gift-bear${i}`))
 }
-const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', giftBearSlides, {height: "160px", marginLeft: "135px", onlyShowArrowOnHover: true , arrowVariant: 3, arrowColor: "#e9ecef"})
+const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', giftBearSlides, {height: "160px", marginLeft: "135px", onlyShowArrowOnHover: true , arrowVariant: 3, arrowColor: "deepskyblue"})
 
 
 const scarfURLs = ['https://purepng.com/public/uploads/large/simple-square-handkerchief-flu.png',
@@ -199,11 +199,10 @@ const scarfURLs = ['https://purepng.com/public/uploads/large/simple-square-handk
     'https://purepng.com/public/uploads/large/flowers-square-handkerchief-ksm.png',
 ]
 const giftScarfSlides = []
-const numScarf = 4
-for (let i = 0; i < numScarf; i++){
+for (let i = 0; i < scarfURLs.length; i++){
     giftScarfSlides.push(new ForegroundSlide(scarfURLs[i], 'scarf', `gift-scarf${i}`))
 }
-const giftScarfSlideshow = new ForegroundSlideshow('gift-scarf-slideshow', giftScarfSlides, {height: "110px", marginTop: "80px", marginLeft: "285px", onlyShowArrowOnHover: true,  arrowVariant: 3, arrowColor: "#e9ecef"})
+const giftScarfSlideshow = new ForegroundSlideshow('gift-scarf-slideshow', giftScarfSlides, {height: "110px", marginTop: "80px", marginLeft: "285px", onlyShowArrowOnHover: true,  arrowVariant: 3, arrowColor: "hotpink"})
 
 
 const cupURLs = ['https://purepng.com/public/uploads/large/purepng.com-cupcupopen-containertablewarecarrying-drinksceramic-cup-1701528266244lgzbl.png',
@@ -211,11 +210,10 @@ const cupURLs = ['https://purepng.com/public/uploads/large/purepng.com-cupcupope
     'https://purepng.com/public/uploads/large/purepng.com-cup-mug-coffeecupmufcoffeebean-1411527406382vrz4g.png'
     ]
 const giftCupSlides = []
-const numCup = 3
-for (let i = 0; i < numCup; i++){
+for (let i = 0; i < cupURLs.length; i++){
     giftCupSlides.push(new ForegroundSlide(cupURLs[i], 'cup', `gift-cup${i}`))
 }
-const giftCupSlideshow = new ForegroundSlideshow('gift-cup-slideshow', giftCupSlides, {height: "90px",marginTop: "145px", marginLeft: "160px" , onlyShowArrowOnHover: true, arrowVariant: 3, arrowColor: "#e9ecef"})
+const giftCupSlideshow = new ForegroundSlideshow('gift-cup-slideshow', giftCupSlides, {height: "90px",marginTop: "145px", marginLeft: "160px" , onlyShowArrowOnHover: true, arrowVariant: 3, arrowColor: "greenyellow"})
 
 const giftSlideshowContainer = new SlideshowContainer('gift-slideshow-container', 'gift-slideshow-div', giftBoxSlideshow, giftPaperSlideshow)
 giftSlideshowContainer.addForegroundSlideshow(giftBearSlideshow)
