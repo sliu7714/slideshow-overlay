@@ -26,6 +26,24 @@
 
     <div id="documentation-body">
 
+        <div id='table-of-contents'>
+            <h1>Table of contents</h1>
+            <ul>
+                <li>
+                    <a href="#getting-started">Getting Started</a>
+                </li>
+                <li>
+                    <a href="#constructors">Constructors</a>
+                </li>
+                <li>
+                    <a href="#options">Options</a>
+                </li>
+                <li>
+                    <a href="#methods">Methods</a>
+                </li>
+            </ul>
+        </div>
+
         <div id="getting-started">
             <h1>Getting Started</h1>
             
@@ -328,15 +346,89 @@
                 </tr>
                 
                 <tr>
-                    <td>height</td>
+                    <td class="option-td">height</td>
                     <td>string</td>
-                    <td>height of the </td>
+                    <td>The height of the slideshow</td>
                 </tr>
+                <tr>
+                    <td class="option-td">width</td>
+                    <td>string</td>
+                    <td>The width of the slideshow</td>
+                </tr>
+                <tr>
+                    <td class="option-td">hideArrows</td>
+                    <td>boolean</td>
+                    <td>If true, hides the arrows for a slideshow</td>
+                </tr>
+                <tr>
+                    <td class="option-td">autoScroll</td>
+                    <td>number</td>
+                    <td>Automatically change the slideshow to the next slide every x milliseconds corresponding to the number passed in</td>
+                </tr>
+                <tr>
+                    <td class="option-td">arrowColor</td>
+                    <td>string</td>
+                    <td>
+                        Changes the color of the arrows in the slideshow
+                        <br>
+                        if undefined, the default arrow color is black.
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="option-td">arrowVariant</td>
+                    <td>number</td>
+                    <td>
+                        Changes the variant style of the arrows in the slideshow
+                        <br>
+                        There are 3 different arrow variations
+                        <!-- icons from iconmonstr.com -->
+                        <ul id="arrow-examples">
+                            <li>
+                                <b>1</b>: <svg class="forward-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z"/></svg>
+                            </li>
+                            <li>
+                                <b>2</b>:  <svg class="forward-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.568 18.005l-1.414-1.415 4.574-4.59-4.574-4.579 1.414-1.416 5.988 5.995-5.988 6.005z"/></svg>
+                            </li>
+                            <li>
+                                <b>3</b>:  <svg class="forward-arrow" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M21 12l-18 12v-24z"/></svg>
+                            </li>
+                        </ul>
+
+                        if undefined, the default is variant 1.
+
+                    </td>
+                </tr>
+                
             </table>
 
             <h3>
                 ForegroundSlideshow <b>only</b> options
             </h3>
+
+            <table>
+                <tr>
+                    <th>option</th>
+                    <th>type</th>
+                    <th>description</th>
+                </tr>
+                
+                <tr>
+                    <td class="option-td">marginTop</td>
+                    <td>string</td>
+                    <td>The top offset from the parent SlideshowContainer</td>
+                </tr>
+                <tr>
+                    <td class="option-td">marginLeft</td>
+                    <td>string</td>
+                    <td>The left offset from the parent SlideshowContainer</td>
+                </tr>
+                <tr>
+                    <td class="option-td">onlyShowArrowOnHover</td>
+                    <td>boolean</td>
+                    <td>If true, only shows the slideshow arrows when hovering over the slideshow</td>
+                </tr>
+            </table>
             
 
         </div>
