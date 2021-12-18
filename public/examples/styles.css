@@ -59,10 +59,47 @@ body#landing-page{
 }
 button{
     margin: 5px;
+    
+    background-color: #803636;
+    color: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0px 1px 2px grey;
 }
-li{
-    margin-top: 10px;
+.code-btn{
+    background-color: #E5E4E4;
+    color: black
 }
 #example-page-main{
     margin-left: 40px;
+}
+
+h1, h2, h3, h4, h5{
+    font-weight: 500;
+    
+}
+h3{
+    margin-bottom: 0px;
+    margin-top: 10px;
+}
+pre{
+    margin: 0px;
+    margin-top: 5px;
+    white-space: pre-line;
+    width: 97%;
+    display: none;
+}
+
+.example-container{
+    display: flex;
+}
+#simple-bg-desc{
+    margin-left: 400px;
+    padding-right: 40px;
+}
+
+ul{
+    margin: 4px auto;
 }

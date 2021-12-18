@@ -9,6 +9,10 @@
     <script src="../overlaySlideshow/overlaySlideshow.js" defer></script>
     <script src="examples.js" defer></script>
 
+    <!-- external library highlight.js used for syntax highlighting in code blocks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+
 </head>
 <body>
     <div class="header">
@@ -79,13 +83,73 @@
                 </li>
             </ul>
         </div>
-    
-        <div id="only-slideshow-div">
-            <h3>Only background slideshow example</h3>
-            You can also create a slideshow with only the background and no foreground slideshows:
-    
-    
-            <button id="autoscroll-btn"> autoscroll (2 secs)</button>
+            
+        <div id="simple-bg-ex" >
+            <h1>Simple background slideshow</h1>
+            <div class="example-container">
+                <div id="only-slideshow-div"></div>
+
+                <div id="simple-bg-desc">
+                    <h3>Adding a Background Slideshow</h3>
+                    You can create a simple slideshow with only the background and no foreground slideshows:
+                    <button class="code-btn">Show Code</button>
+                    <pre>
+                        <code>const imageURLs = [
+                                'https://images.unsplash.com/photo-1639516510662-4c3a3e13feff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+                                'https://images.unsplash.com/photo-1635353679604-abc3f9f9d9d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+                                'https://images.unsplash.com/photo-1547103106-9a0e718bb2d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80',
+                                'https://images.unsplash.com/photo-1568751302461-fc6f40fa9382?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80',
+                            ]
+
+                            const bgSlides = []
+                            // create the background slides
+                            for (let i = 0; i < imageURLs.length; i ++){
+                                bgSlides.push(new BackgroundSlide(imageURLs[i], 'nature photo', `bg_${i}`))
+                            }
+
+                            // add to background slideshow
+                            const bgSlideshow = new BackgroundSlideshow('bg-slideshow', bgSlides, {height: "500px", width: "500px"})
+
+                            // add only the background slideshow to DOM
+                            const onlyBgSlideshowContainer = new SlideshowContainer('only-bg-slideshow-container', 'only-slideshow-div', bgSlideshow)
+                        </code>
+                    </pre>
+                    
+                    <div>
+                        <h3>Text Slides and Adding a Foreground Slideshow</h3>
+                        You can also add additional foreground slideshows
+                        <button id="toggle-text-slideshow"> Add foreground text slideshow </button>
+                    </div>
+                    
+                    <div>
+                        <h3>Auto-Scroll</h3>
+                        There is the option to "auto-scroll" through the slideshows.
+                        
+                        <button id="autoscroll-btn">start auto-scroll</button> 
+                        <ul>
+                            <li>
+                                Pressing the 'start auto-scroll' button will change the background slideshow to change slides every 2 seconds.
+                                then pressing 'stop auto-scroll' will stop the automatic scrolling for this slideshow
+                            </li>
+                        </ul>
+                        <button class="code-btn" >Show Code</button>
+                        <pre>
+                        <code>...
+                            // set auto scroll to change slide every 2 seconds
+                            bgSlideshow.addAutoScroll(2000)
+                            ...
+                            // turn auto scroll off
+                            bgSlideshow.removeAutoScroll()
+                        </code>
+                        </pre>
+                    </div>
+            </div>
+
+            </div>
+            
+            
+            
+            
         </div>
     
         <div id="gift-section">

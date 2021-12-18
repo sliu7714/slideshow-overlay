@@ -1,44 +1,90 @@
-// js file that uses the library
+// example page 
 "use strict"
 
+hljs.highlightAll(); // using the external library https://highlightjs.org/ for syntax highlighting in code blocks
 
-// -----------------------------ONLY BACKGROUND SLIDE EXAMPLE------------------------------
-const image1URL = 'https://images.unsplash.com/photo-1547103106-9a0e718bb2d2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=686&q=80'
-const image2URL = 'https://images.unsplash.com/photo-1548133650-7e2b96ebe5e6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=681&q=80'
-const image3URL = 'https://images.unsplash.com/photo-1536431311719-398b6704d4cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
 
-const bg1 = new BackgroundSlide(image1URL, 'image 1', 'bg_10')
-const bg2 = new BackgroundSlide(image2URL, 'image 2', 'bg_11')
-const bg3 = new BackgroundSlide(image3URL, 'image 3', 'bg_12')
+// handle show code buttons
+$(".code-btn").on('click', function () {
+    // select the next "pre" element immediately following this button
+    $(this).next("pre").toggle()
 
-const bgSlideshow = new BackgroundSlideshow('bg-slideshow', [bg1, bg2, bg3],  {height: "500px", width: "500px"})
+    if($(this).next("pre").is(':visible')){
+        $(this).html("Hide Code")
+    }
+    else if($(this).next("pre").is(':hidden')){
+        $(this).html("Show Code")
+    }
+})
 
+// -----------------------------SIMPLE BACKGROUND SLIDE EXAMPLE------------------------------
+const imageURLs = [
+    'https://images.unsplash.com/photo-1639516510662-4c3a3e13feff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+    'https://images.unsplash.com/photo-1635353679604-abc3f9f9d9d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+    'https://images.unsplash.com/photo-1547103106-9a0e718bb2d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80',
+    'https://images.unsplash.com/photo-1568751302461-fc6f40fa9382?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80',
+]
+const bgSlides = []
+// create the background slides
+for (let i = 0; i < imageURLs.length; i ++){
+    bgSlides.push(new BackgroundSlide(imageURLs[i], 'nature photo', `bg_${i}`))
+}
+
+// add to background slideshow
+const bgSlideshow = new BackgroundSlideshow('bg-slideshow', bgSlides, {height: "500px"})
+
+// add only the background slideshow to DOM 
 const onlyBgSlideshowContainer = new SlideshowContainer('only-bg-slideshow-container', 'only-slideshow-div', bgSlideshow)
 
+const greetingText = ["Hello", "Bonjour", "Ciao", "Hola"]
+const textSlides = []
+// create the foreground text slides
+for (let i = 0; i < greetingText.length; i ++){
+    textSlides.push(new TextSlide(greetingText[i], 30, `greeting${i}` ))
+}
 
-const textSlide1 = new TextSlide( "this is test1", 20, 'ts_1')
-const textSlide2 = new TextSlide( "this is test2", 20, 'ts_2')
-
-const textSlideshow = new ForegroundSlideshow('text-slide', [textSlide1, textSlide2], {height: "100px"} )
-
-onlyBgSlideshowContainer.addForegroundSlideshow(textSlideshow)
+// add to foreground slideshow
+const textSlideshow = new ForegroundSlideshow('text-slide', textSlides, {height: "100px", width: "390px", marginTop: "120px"} )
 
 
-let isAutoScroll = false
-$('#autoscroll-btn').click(()=>{
-    if (isAutoScroll){
-        bgSlideshow.removeAutoScroll()
+let isTextSlideshowAdded = false
+$('#toggle-text-slideshow').click(function(){
+    if (!isTextSlideshowAdded){
+        // add slideshow to the slideshow container
+        onlyBgSlideshowContainer.addForegroundSlideshow(textSlideshow)
+        $(this).html('Add foreground text slideshow')
     }
     else{
-        bgSlideshow.addAutoScroll(2000)
+        // remove slideshow from the slideshow container
+        // onlyBgSlideshowContainer.removeForegroundSlideshow(textSlideshow) // TODO
+        $(this).html('Remove foreground text slideshow')
     }
-
-    isAutoScroll = !isAutoScroll
-    
+    isTextSlideshowAdded = !isTextSlideshowAdded
 })
 
 
-// ---------------------------END ONLY BACKGROUND SLIDE EXAMPLE-----------------------------
+
+
+
+let isAutoScroll = false
+$('#autoscroll-btn').click(function(){
+    if (isAutoScroll){
+        // turn auto scroll off
+        bgSlideshow.removeAutoScroll()
+        $(this).html('start auto-scroll')
+    }
+    else{
+        // set auto scroll to change slide every 2 seconds
+        bgSlideshow.addAutoScroll(2000)
+        $(this).html('stop auto-scroll')
+    }
+    isAutoScroll = !isAutoScroll
+})
+
+
+
+
+// ---------------------------END -SIMPLE BACKGROUND SLIDE EXAMPLE-----------------------------
 
 
 
