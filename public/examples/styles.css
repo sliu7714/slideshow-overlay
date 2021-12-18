@@ -99,6 +99,12 @@ pre{
     max-width: calc(100vw - 500px);
     display: none;
 }
+#documentation-body pre{
+    display: block;
+    max-width: calc(100vw - 100px);
+    white-space: pre-line;
+    margin-top: 10px; 
+}
 .wider-code{
     max-width: calc(100vw - 100px);
 }
@@ -139,7 +145,8 @@ ul{
 
 /* for docuentation page */
 #documentation-body{
-    margin: 40px;
+    margin: 50px;
+    margin-right: 200px;
 }
 table{
     width: 90vw;
@@ -147,4 +154,21 @@ table{
 }
 th{
     color: #5a1717;
+}
+.note{
+   display: inline;
+}
+.reg-whitespace{
+    white-space:normal;
+}
+#methods h3, #constructors h3{
+    margin-bottom: 4px;
+    color: #5a1717;
+    margin-top: 14px;
+}
+#methods h2{
+    margin-bottom: 4px;
+}
+.italic{
+    font-style: italic;
 }

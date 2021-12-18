@@ -226,7 +226,7 @@
             this.forwardArrow.hide()
             this.backArrow.hide()
         }
-        hideArrows(){
+        showArrows(){
             this.forwardArrow.show()
             this.backArrow.show()
         }

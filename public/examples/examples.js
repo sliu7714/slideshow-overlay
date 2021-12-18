@@ -62,10 +62,6 @@ $('#toggle-text-slideshow').click(function(){
     isTextSlideshowAdded = !isTextSlideshowAdded
 })
 
-
-
-
-
 let isAutoScroll = false
 $('#autoscroll-btn').click(function(){
     if (isAutoScroll){
@@ -80,10 +76,6 @@ $('#autoscroll-btn').click(function(){
     }
     isAutoScroll = !isAutoScroll
 })
-
-
-
-
 // ---------------------------END -SIMPLE BACKGROUND SLIDE EXAMPLE-----------------------------
 
 

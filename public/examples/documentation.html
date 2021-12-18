@@ -29,20 +29,82 @@
         <div id="getting-started">
             <h1>Getting Started</h1>
             
-            Firstly, include these scripts:
+            To use the library, include these scripts:
+
+            <pre>
+                <code>&lt link rel="stylesheet" href="'&lt...path to overlaySlideshowStyles.css>"&gt
+                    &lt script src="&lt...path to overlaySlideshow.js>"> &lt/script>
+                </code>
+            </pre> 
+
+            <h3>Creating Slides</h3>
+            Before creating a slideshow, you must create slides first. 
+            <br>
+            There are 3 types of slides,
+            <ul>
+                <li> BackgroundSlides contain images and can be added to BackgroundSlideshows </li>
+                <li> ForegroundSlides contain images and can be added to ForegroundSlideshows </li>
+                <li> TextSlides contain text and can be added to ForegroundSlideshows </li>
+            </ul>
+            
+            Here is an example of creating a simple BackgroundSlide instance,  
+            <pre>
+                <code> const backgroundSlide = new BackgroundSlide('&ltalt text for image&gt', '&lt...path to image&gt', 'background-slide-element-id' ) </code>
+            </pre>
+
+
+            <h3>Creating Slideshows</h3>
+            After creating the slide instances, you can create slideshows (BackgroundSlideshow or ForegroundSlideshow)
+            <br>
+
+            Here is an example of creating a simple BackgroundSlideshow instance
+            <pre>
+                <code> const backgroundSlideshow = new BackgroundSlideshow('background-slideshow-element-id', [...list of BackgroundSlide instances], {...options}) </code>
+            </pre>
+
+            <h4 class="note"><i>Note:</i></h4> each slideshow must contain at least one slide and slide instances cannot be used in more than one slideshow.
+            
+
+
+            <h3>Adding to SlideshowContainers</h3>
+            Finally, after creating Slideshow instances, you may create a SlideshowContainer to add the slideshows to the DOM 
+            <br>
+
+            <pre class="reg-whitespace">
+                <code> 
+                    const slideshowContainer = new SlideshowContainer('slideshow-container-element-id', 'id of element to append this SlideshowContainer to', &lt BackgroundSlideshow instance &gt, &lt ForegroundSlideshow instance &gt(optional)) 
+                                                                        
+                </code>
+            </pre>
+
+            SlideshowContainers can only contain one BackgroundSlideshow, but they may contain zero or more ForegroundSlideshows
 
 
         </div>
 
-        <div id="Constructors">
+        <div id="constructors">
             <h1>Constructors</h1>
             
+            <h3>BackgroundSlide(alt, src, id)</h3>
+
+            <h3>ForegroundSlide(alt, src, id)</h3>
+
+            <h3>TextSlide(text, fontSize, id)</h3>
+
             
+            <h3>ForegroundSlideshow(id, slides, options))</h3>
+
+            <h3>BackgroundSlideshow(id, slides, options))</h3>
+
+
+            <h3>SlideshowContainer(id, containerID, backgroundSlideshow, foregroundSlideshow)</h3>
+
+
 
         </div>
         <div id="options">
             <h1>Options </h1>
-            attributes of the options parameter used when creating a new ForegroundSlideshow or BackgroundSlideshow
+            Attributes of the options parameter used when creating a new ForegroundSlideshow or BackgroundSlideshow
             
             <table>
                 <tr>
@@ -62,8 +124,98 @@
 
         </div>
 
-        <div id="Methods">
+        <div id="methods">
             <h1>Methods</h1>
+            
+            <h2 class="italic">Methods for both ForegroundSlideshow and BackgroundSlideshow</h2>
+            ForegroundSlideshow and BackgroundSlideshow both inherit from the same parent class so they share many methods.
+            
+            <h3>.addSlide(slide)</h3>
+            Add a single slide instance to the end of a slideshow
+
+            <h3>.addSlides(slidesList)</h3>
+            Add a list of slide instances to the end of a slideshow
+
+            <h3>.removeSlide(slide)</h3>
+            Remove a slide from a slideshow, if the slide is not part of the slideshow or is the last slide in the slideshow, an error is thrown
+            
+            <h3>.nextSlide()</h3>
+            Move to the next slide in the slideshow, or the first slide if the current slide is the last
+            
+            <h3>.prevSlide()</h3>
+            Move to the next slide in the slideshow, or the first slide if the current slide is the last
+
+            <h3>.changeSlide(index)</h3>
+            Move to a i-th slide in the slideshow corresponding to the parameter 'index'throws an error if the index is out of bounds
+
+            <h3>.randomSlide()</h3>
+            Move to a random slide in the slideshow 
+
+            <h3>.addAutoScroll(milliseconds)</h3>
+            Set a interval to automatically change the slideshow to the next slide every x milliseconds corresponding to the 'milliseconds' parameter
+
+            <h3>.removeAutoScroll()</h3>
+            Stop the interval that automatically changes the slides every x milliseconds.
+            
+            <h3>.hideArrows()</h3>
+            Hide the arrows on either side of the slideshow from appearing.
+
+            <h3>.showArrows()</h3>
+            Show the arrows on either side of the slideshow.
+            
+            
+            <!-- <pre>
+                <code>
+                    //___________BOTH FOREGROUND AND BACKGROUND SLIDESHOW_____________
+
+                    // add a single slide instance to the end of a slideshow
+                    slideshowInstance.addSlide(slide)
+
+                    // add a list of slide instance to the end of a slideshow
+                    slideshowInstance.addSlides(slidesList)
+
+                    // remove a slide from a slideshow, 
+                    // if the slide is not part of the slideshow or is the last slide in the slideshow, an error is thrown
+                    slideshowInstance.removeSlide(slide)
+                    
+                    // move to the next slide in the slideshow, or the first slide if the current slide is the last
+                    slideshowInstance.nextSlide()
+
+                    // move to the previous slide in the slideshow, or the last slide if the current slide is the first
+                    slideshowInstance.prevSlide()
+
+                    // move to a i-th slide in the slideshow corresponding to the parameter 'index',
+                    // throws an error if the index is out of bounds
+                    slideshowInstance.changeSlide(index)
+
+                    // move to a random slide in the slideshow 
+                    slideshowInstance.randomSlide()
+
+                    // 
+
+                    // ONLY FOREGROUND SLIDESHOW
+
+
+
+                </code>
+            </pre>  -->
+            <h2 class="italic">Methods for only ForegroundSlideshow</h2>
+            <h3>.orderForward()</h3>
+            Move this slideshow forward one layer (changes the z-index)
+
+            <h3>.orderBackward()</h3>
+            Move this slideshow backwards one layer (changes the z-index)
+
+
+            <h2 class="italic"> SlideshowContainer Methods</h2>
+            <h3>.addForegroundSlideshow(foregroundSlideshow)</h3>
+            Add a single ForegroundSlideshow instance to a SlideshowContainer
+
+            <h3>.removeForegroundSlideshow(foregroundSlideshow)</h3>
+            Remove a ForegroundSlideshow instance from a SlideshowContainer, if the foregroundSlideshow is not a part of the SlideshowContainer, an error is thrown
+
+            <h3>.randomSlides()</h3>
+            Change all slideshows in this slideshow container to a random slide
 
         </div>
 
