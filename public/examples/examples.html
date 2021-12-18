@@ -29,14 +29,6 @@
     <div id="example-page-main">
         
     
-        <div>
-            <h2>Overlay Slideshow Javascript Library examples</h2>
-            <i>note: some of the images might take a second to load</i>
-           <!-- <button id="testButton">test button(temp)</button> -->
-    
-        </div>
-    
-        <div id="test-div"></div>
     
         <div id="clothing-section">
             <h2>Clothing slideshow example:</h2>
@@ -86,70 +78,96 @@
             
         <div id="simple-bg-ex" >
             <h1>Simple background slideshow</h1>
+            <li class="example-subtitle">Press the buttons to either side of the pictures to navigate through the slideshow</div>
+           
             <div class="example-container">
-                <div id="only-slideshow-div"></div>
+                <!-- container for slideshow container -->
+                <div id="simple-example-slideshow-div"></div>
 
                 <div id="simple-bg-desc">
-                    <h3>Adding a Background Slideshow</h3>
-                    You can create a simple slideshow with only the background and no foreground slideshows:
-                    <button class="code-btn">Show Code</button>
-                    <pre>
-                        <code>const imageURLs = [
-                                'https://images.unsplash.com/photo-1639516510662-4c3a3e13feff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-                                'https://images.unsplash.com/photo-1635353679604-abc3f9f9d9d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-                                'https://images.unsplash.com/photo-1547103106-9a0e718bb2d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80',
-                                'https://images.unsplash.com/photo-1568751302461-fc6f40fa9382?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80',
-                            ]
+                    <div>
+                        <h3>Adding a Background Slideshow</h3>
+                        You can create a simple slideshow with only the background and no foreground slideshows.
+                        
+                        <button class="code-btn">Show Code</button>
+                        <pre>
+                            <code>
+    const imageURLs = ['https://images.unsplash.com/photo-1639516510662-4c3a3e13feff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+        'https://images.unsplash.com/photo-1635353679604-abc3f9f9d9d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
+        'https://images.unsplash.com/photo-1547103106-9a0e718bb2d2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80',
+        'https://images.unsplash.com/photo-1568751302461-fc6f40fa9382?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80']
 
-                            const bgSlides = []
-                            // create the background slides
-                            for (let i = 0; i < imageURLs.length; i ++){
-                                bgSlides.push(new BackgroundSlide(imageURLs[i], 'nature photo', `bg_${i}`))
-                            }
+    const bgSlides = []
+    // create the background slides
+    for (let i = 0; i < imageURLs.length; i ++){
+        bgSlides.push(new BackgroundSlide(imageURLs[i], 'nature photo', `bg_${i}`))
+    }
 
-                            // add to background slideshow
-                            const bgSlideshow = new BackgroundSlideshow('bg-slideshow', bgSlides, {height: "500px", width: "500px"})
+    // add slides to background slideshow
+    const bgSlideshow = new BackgroundSlideshow('bg-slideshow', bgSlides, {height: "500px"})
 
-                            // add only the background slideshow to DOM
-                            const onlyBgSlideshowContainer = new SlideshowContainer('only-bg-slideshow-container', 'only-slideshow-div', bgSlideshow)
-                        </code>
-                    </pre>
+    // add only the background slideshow to DOM 
+    const simpleExampleSlideshowContainer = new SlideshowContainer('simple-ex-slideshow-container', 'simple-example-slideshow-div', bgSlideshow)
+                            </code>
+                        </pre> 
+                    </div>
                     
                     <div>
                         <h3>Text Slides and Adding a Foreground Slideshow</h3>
-                        You can also add additional foreground slideshows
-                        <button id="toggle-text-slideshow"> Add foreground text slideshow </button>
+                        You can also create add additional foreground slideshows that contain either images or text.
+                        <button class="code-btn" >Show Code</button>
+                        <pre>
+                            <code>
+    const greetingText = ["Hello", "Bonjour", "Ciao", "Hola"]
+    const textSlides = []
+    // create the foreground text slides
+    for (let i = 0; i < greetingText.length; i ++){
+        textSlides.push(new TextSlide(greetingText[i], 30, `greeting${i}`))
+    }
+    // add slides to foreground slideshow
+    const textSlideshow = new ForegroundSlideshow('text-greeting-slideshow', textSlides, {height: "100px", width: "390px", marginTop: "120px"} )
+    ...
+    // add slideshow to the slideshow container
+    simpleExampleSlideshowContainer.addForegroundSlideshow(textSlideshow)
+    ...
+    // remove slideshow from the slideshow container
+    simpleExampleSlideshowContainer.removeForegroundSlideshow(textSlideshow)
+                            </code>
+                        </pre>
+                        <ul>
+                            <li>
+                                Press this button to add/remove a foreground text slideshow
+                                <br>
+                                <button id="toggle-text-slideshow"> Add foreground text slideshow </button>
+                            </li>
+                        </ul>
                     </div>
                     
                     <div>
                         <h3>Auto-Scroll</h3>
-                        There is the option to "auto-scroll" through the slideshows.
-                        
-                        <button id="autoscroll-btn">start auto-scroll</button> 
-                        <ul>
-                            <li>
-                                Pressing the 'start auto-scroll' button will change the background slideshow to change slides every 2 seconds.
-                                then pressing 'stop auto-scroll' will stop the automatic scrolling for this slideshow
-                            </li>
-                        </ul>
+                        There is the option to automatically change the slides for each slideshow.
                         <button class="code-btn" >Show Code</button>
                         <pre>
-                        <code>...
-                            // set auto scroll to change slide every 2 seconds
-                            bgSlideshow.addAutoScroll(2000)
-                            ...
-                            // turn auto scroll off
-                            bgSlideshow.removeAutoScroll()
-                        </code>
+                            <code>...
+    // set auto scroll to change slide every 2 seconds
+    bgSlideshow.addAutoScroll(2000)
+    ...
+    // turn auto scroll off
+    bgSlideshow.removeAutoScroll()
+                            </code>
                         </pre>
+                        <ul>
+                            <li>
+                                Pressing this 'start auto-scroll' button will change the background slideshow <code>bgSlideshow</code> to change slides every 2 seconds.
+                                Then pressing 'stop auto-scroll' will stop the automatic scrolling.
+                                <br>
+                                <button id="autoscroll-btn">start auto-scroll</button> 
+                            </li>
+                        </ul>
                     </div>
-            </div>
 
+                </div>
             </div>
-            
-            
-            
-            
         </div>
     
         <div id="gift-section">

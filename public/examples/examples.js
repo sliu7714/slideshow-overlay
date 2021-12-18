@@ -30,33 +30,33 @@ for (let i = 0; i < imageURLs.length; i ++){
     bgSlides.push(new BackgroundSlide(imageURLs[i], 'nature photo', `bg_${i}`))
 }
 
-// add to background slideshow
+// add slides to background slideshow
 const bgSlideshow = new BackgroundSlideshow('bg-slideshow', bgSlides, {height: "500px"})
 
 // add only the background slideshow to DOM 
-const onlyBgSlideshowContainer = new SlideshowContainer('only-bg-slideshow-container', 'only-slideshow-div', bgSlideshow)
+const simpleExampleSlideshowContainer = new SlideshowContainer('simple-ex-slideshow-container', 'simple-example-slideshow-div', bgSlideshow)
 
 const greetingText = ["Hello", "Bonjour", "Ciao", "Hola"]
 const textSlides = []
 // create the foreground text slides
 for (let i = 0; i < greetingText.length; i ++){
-    textSlides.push(new TextSlide(greetingText[i], 30, `greeting${i}` ))
+    textSlides.push(new TextSlide(greetingText[i], 30, `greeting${i}`))
 }
 
-// add to foreground slideshow
-const textSlideshow = new ForegroundSlideshow('text-slide', textSlides, {height: "100px", width: "390px", marginTop: "120px"} )
+// add slides to foreground slideshow
+const textSlideshow = new ForegroundSlideshow('text-greeting-slideshow', textSlides, {height: "100px", width: "390px", marginTop: "120px"} )
 
 
 let isTextSlideshowAdded = false
 $('#toggle-text-slideshow').click(function(){
     if (!isTextSlideshowAdded){
         // add slideshow to the slideshow container
-        onlyBgSlideshowContainer.addForegroundSlideshow(textSlideshow)
+        simpleExampleSlideshowContainer.addForegroundSlideshow(textSlideshow)
         $(this).html('Add foreground text slideshow')
     }
     else{
         // remove slideshow from the slideshow container
-        // onlyBgSlideshowContainer.removeForegroundSlideshow(textSlideshow) // TODO
+        simpleExampleSlideshowContainer.removeForegroundSlideshow(textSlideshow)
         $(this).html('Remove foreground text slideshow')
     }
     isTextSlideshowAdded = !isTextSlideshowAdded
