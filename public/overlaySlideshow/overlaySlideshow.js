@@ -226,6 +226,10 @@
             this.forwardArrow.hide()
             this.backArrow.hide()
         }
+        hideArrows(){
+            this.forwardArrow.show()
+            this.backArrow.show()
+        }
 
 
     }
