@@ -184,8 +184,6 @@
                 return
             }
             
-            console.log(this.animationVariant)
-            console.log('test',this.test)
             switch(this.animationVariant){
                 case(1): // fade in animation
                     $(this.slidesList[this.currentSlideIndex].element).fadeOut(

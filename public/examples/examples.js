@@ -48,18 +48,26 @@ const textSlideshow = new ForegroundSlideshow('text-greeting-slideshow', textSli
 
 
 let isTextSlideshowAdded = false
+let canAdd = true
 $('#toggle-text-slideshow').click(function(){
-    if (!isTextSlideshowAdded){
+    
+    if(!isTextSlideshowAdded && !canAdd){
+        alert('please refresh the page to add the text slideshow again')
+    }
+    else if (!isTextSlideshowAdded){
         // add slideshow to the slideshow container
         simpleExampleSlideshowContainer.addForegroundSlideshow(textSlideshow)
         $(this).html('Remove foreground text slideshow')
+        canAdd = false;
+        isTextSlideshowAdded = true
     }
     else{
         // remove slideshow from the slideshow container
         simpleExampleSlideshowContainer.removeForegroundSlideshow(textSlideshow)
         $(this).html('Add foreground text slideshow')
+        isTextSlideshowAdded = false
     }
-    isTextSlideshowAdded = !isTextSlideshowAdded
+    
 })
 
 let isAutoScroll = false
