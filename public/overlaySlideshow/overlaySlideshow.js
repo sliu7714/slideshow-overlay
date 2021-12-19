@@ -91,7 +91,6 @@
     }
 
     class SlideShow{
-        // later can add options for showing arrows(only one slide), size, etc?
         constructor(id, slides, options, slideshowClassName, slideContainerClassName ) {
             // every slideshow must contain minimum one slide
             if (slides.length < 1){
@@ -137,7 +136,9 @@
             if(options.autoScroll){
                 this.addAutoScroll(options.autoScroll)
             }
-            
+            if(options.animationVariant){
+                this.animationVariant = options.animationVariant
+            } 
 
         }
 
@@ -182,11 +183,49 @@
                 console.log(`Slideshow.changeSlide: slideshow index out of bounds`)
                 return
             }
-            // hide previous slide
-            $(this.slidesList[this.currentSlideIndex].element).hide()
-            // show current slide
-            this.currentSlideIndex = index;
-            $(this.slidesList[this.currentSlideIndex].element).show()
+            
+            console.log(this.animationVariant)
+            console.log('test',this.test)
+            switch(this.animationVariant){
+                case(1): // fade in animation
+                    $(this.slidesList[this.currentSlideIndex].element).fadeOut(
+                        500,
+                        function(){
+                            this.currentSlideIndex = index;
+                            $(this.slidesList[this.currentSlideIndex].element).fadeIn(500)
+                        }.bind(this)
+                    )
+                    break;
+
+                case(2): // slide animation
+
+                    // disable arrows during animation to prevent unwanted behavior of overlapping animations
+                    $(this.forwardArrow).css('pointer-events', 'none')
+                    $(this.backArrow).css('pointer-events', 'none')
+
+                    $(this.slidesList[this.currentSlideIndex].element).animate({ width: "0%" }, 1000, function(){
+                        $(this).hide()
+                        $(this).css("width","100%")
+                    } )
+
+                    $(this.slidesList[index].element).css("width","0%")
+
+                    this.currentSlideIndex = index;
+                    $(this.slidesList[this.currentSlideIndex].element).animate({ width: "100%" }, 1000, function(){
+                        // make arrows clickable again after animation is over
+                        $(this.forwardArrow).css('pointer-events', 'visiblePainted')
+                        $(this.backArrow).css('pointer-events', 'visiblePainted')
+                    }.bind(this))
+                
+                    break;
+
+                default:// no animation
+                    // hide previous slide
+                    $(this.slidesList[this.currentSlideIndex].element).hide()
+                    // show current slide
+                    this.currentSlideIndex = index;
+                    $(this.slidesList[this.currentSlideIndex].element).show()
+            }
 
         }
 
@@ -270,9 +309,6 @@
                     $(this.backArrow).toggle();
                 }.bind(this))
             }
-
-            
-
         }
 
         // move order of this slideshow forward
@@ -330,104 +366,6 @@
         }
 
     }
-
-    // class Draggable{
-    //     constructor(){
-    //         this.x = 0
-    //         this.y = 0 
-            
-
-    //         this.slideshowContainer = $(`<button class=${"test-drag"} id="idk2"> test2 </button>`)
-            
-            
-    //         // $(`#${"drag-container"}`).append(this.slideshowContainer2)
-    //         $(`#${"drag-container"}`).append( this.slideshowContainer)
-            
-    //         console.log("here in draggable")
-        
-
-    //         // // $(this.slideShowContainer).click(() => {console.log("here!")})
-    //         // $( this.slideshowContainer).click(() => {console.log('fwd arrow')})
-    //         // $(this.slideshowContainer).on('click',this.moveSlideshow)
-    //         $(document).ready(function(){
-    //             $(this.slideshowContainer).on('mousedown', this.mouseDown.bind(this))
-    //             $(this.slideshowContainer).on('mouseup', this.mouseUp.bind(this))
-
-    //             // $(this.slideShowContainer).css('padding-top', '50px')
-    //             // $(this.slideshowContainer).css({"background-color": "green",'padding-top': '50px'})
-            
-    //           }.bind(this));
-            
-            
-    //     }
-
-    //     mouseDown (e){
-
-    //         e.preventDefault();
-
-    //         const id  = $(this.slideshowContainer).attr('id')
-    //         const slideShow = document.getElementById(id)
-
-    //         // initial mouse position
-    //         this.x = e.clientX
-    //         this.y = e.clientY
-    //         console.log('down: this.y:',this.x)
-    //         console.log('down: this.x:',this.y)
-
-
-    //         console.log('mousedown')
-    //         // add eventListener for moving the slideshow when mouse is clicked down 
-            
-    //         slideShow.style.backgroundColor  = "green"
-    //         // $(this.slideShowContainer).on('mousemove', this.moveSlideshow.bind(this)) //not sure why does this not work?
-    //         slideShow.onmousemove = this.moveSlideshow.bind(this)
-    //     }
-
-    //     mouseUp(e){
-    //         const id  = $(this.slideshowContainer).attr('id')
-    //         const slideShow = document.getElementById(id)
-
-    //         console.log('mouseup')
-    //         // remove eventListening when mouse is released to prevent further movement 
-    //         // $(this.slideShowContainer).off('mousemove', this.moveSlideshow.bind(this))
-    //         slideShow.style.backgroundColor  = "red"
-    //         slideShow.onmousemove = null
-    //         // window.removeEventListener('mousemove', this.moveSlideshow, true)
-    //     }
-
-    //     moveSlideshow(e){
-
-    //         // console.log($(this.slideshowContainer).css('background-color'))
-    //         const id  = $(this.slideshowContainer).attr('id')
-    //         const slideShow = document.getElementById(id)
-
-    //         // // move absolute positioning to where mouse is 
-    //         const mouseY = e.clientY
-    //         const mouseX = e.clientX
-
-    //         // console.log('this.y:',this.x)
-    //         // console.log('this.x:',this.y)
-
-    //         console.log('clientY:',mouseY, 'clientX:',mouseX)
-
-    //         // console.log('offset top (y):',slideShow.offsetTop, 'offset left (x):',slideShow.offsetLeft)
-
-    //         slideShow.style.top  =  e.clientY - this.y + "px"
-    //         slideShow.style.left  = e.clientX  - this.x + "px"
-
-            
-    //         // const off1 = this.x - e.clientX
-    //         // const off2 = this.y - e.clientY
-    //         // // this.x = e.clientX
-    //         // // this.y = e.clientY
-
-    //         // slideShow.style.top  =  (slideShow.offsetParent.offsetTop - (off2)) + "px"
-    //         // slideShow.style.left  = (slideShow.offsetParent.offsetLeft -(off1)) + "px"
-
-    //         slideShow.style.backgroundColor  = "orange"
-
-    //     }
-    // }
 
 
 global.ForegroundSlide = global.ForegroundSlide || ForegroundSlide

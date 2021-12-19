@@ -122,6 +122,16 @@ ul{
     margin-left: 390px;
     padding-right: 40px;
 }
+.animation-examples{
+    margin-top: 20px;;
+}
+.animation-examples table{
+    text-align: center;
+    width: 700px;;
+}
+.animation-examples td{
+    padding: 0px 50px;
+}
 
 #img-source-links{
     display: flex;
@@ -147,7 +157,7 @@ table{
     text-align: left;
     border-collapse: collapse;
 }
-tr{
+#documentation-body tr{
     border-top: 1px solid gray;
 }
 #constructors table{
@@ -161,7 +171,7 @@ tr{
     color: #5a1717;
     font-weight: 500;
 }
-#constructors a{
+#constructors a, #options a{
     text-decoration: none;
     font-weight: 500;
     color: black

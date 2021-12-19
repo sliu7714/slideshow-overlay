@@ -18,8 +18,9 @@
 .background-container{
 }
 .background-slide{
-    max-width:100%;
-    max-height:100%;
+    object-fit: cover;
+    width:100%;
+    height:100%;
 }
 
 .foreground-slideshow{
@@ -32,8 +33,9 @@
 .foreground-container{
 }
 .foreground-slide{
-    max-width:100%;
-    max-height:100%;
+    object-fit: cover;
+    width:100%;
+    height:100%;
 }
 
 .text-slide{

@@ -31,7 +31,7 @@ for (let i = 0; i < imageURLs.length; i ++){
 }
 
 // add slides to background slideshow
-const bgSlideshow = new BackgroundSlideshow('bg-slideshow', bgSlides, {height: "500px"})
+const bgSlideshow = new BackgroundSlideshow('bg-slideshow', bgSlides, {height: "500px", width: "400px"})
 
 // add only the background slideshow to DOM 
 const simpleExampleSlideshowContainer = new SlideshowContainer('simple-ex-slideshow-container', 'simple-example-slideshow-div', bgSlideshow)
@@ -181,7 +181,7 @@ const giftBearSlides = []
 for (let i = 0; i < bearURLs.length; i++){
     giftBearSlides.push(new ForegroundSlide(bearURLs[i], 'bear', `gift-bear${i}`))
 }
-const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', giftBearSlides, {height: "180px", marginLeft: "190px", onlyShowArrowOnHover: true , arrowVariant: 3, arrowColor: "deepskyblue"})
+const giftBearSlideshow = new ForegroundSlideshow('gift-bear-slideshow', giftBearSlides, {height: "180px", width:"215px", marginLeft: "190px", onlyShowArrowOnHover: true , arrowVariant: 3, arrowColor: "deepskyblue"})
 
 
 const scarfURLs = ['https://purepng.com/public/uploads/large/simple-square-handkerchief-flu.png',
@@ -193,7 +193,7 @@ const giftScarfSlides = []
 for (let i = 0; i < scarfURLs.length; i++){
     giftScarfSlides.push(new ForegroundSlide(scarfURLs[i], 'scarf', `gift-scarf${i}`))
 }
-const giftScarfSlideshow = new ForegroundSlideshow('gift-scarf-slideshow', giftScarfSlides, {height: "120px", marginTop: "110px", marginLeft: "380px", onlyShowArrowOnHover: true,  arrowVariant: 3, arrowColor: "hotpink"})
+const giftScarfSlideshow = new ForegroundSlideshow('gift-scarf-slideshow', giftScarfSlides, {height: "120px", width:"180px", marginTop: "110px", marginLeft: "370px", onlyShowArrowOnHover: true,  arrowVariant: 3, arrowColor: "hotpink"})
 
 
 const cupURLs = ['https://purepng.com/public/uploads/large/purepng.com-cupcupopen-containertablewarecarrying-drinksceramic-cup-1701528266244lgzbl.png',
@@ -204,7 +204,7 @@ const giftCupSlides = []
 for (let i = 0; i < cupURLs.length; i++){
     giftCupSlides.push(new ForegroundSlide(cupURLs[i], 'cup', `gift-cup${i}`))
 }
-const giftCupSlideshow = new ForegroundSlideshow('gift-cup-slideshow', giftCupSlides, {height: "110px",marginTop: "190px", marginLeft: "240px" , onlyShowArrowOnHover: true, arrowVariant: 3, arrowColor: "greenyellow"})
+const giftCupSlideshow = new ForegroundSlideshow('gift-cup-slideshow', giftCupSlides, {height: "110px",  width:"200px", marginTop: "190px", marginLeft: "230px" , onlyShowArrowOnHover: true, arrowVariant: 3, arrowColor: "greenyellow"})
 
 const giftSlideshowContainer = new SlideshowContainer('gift-slideshow-container', 'gift-slideshow-div', giftBoxSlideshow, giftPaperSlideshow)
 giftSlideshowContainer.addForegroundSlideshow(giftBearSlideshow)
@@ -213,3 +213,36 @@ giftSlideshowContainer.addForegroundSlideshow(giftScarfSlideshow)
 //--------------------------------END GIFTS SLIDESHOW----------------------------------
 
 
+// --------------------------------ANIMATION SLIDESHOW----------------------------------
+
+// Animation variant 1
+const bg1Slides = []
+// create the background slides
+for (let i = 0; i < imageURLs.length; i ++){
+    bg1Slides.push(new BackgroundSlide(imageURLs[i], 'nature photo', `bg1_${i}`))
+}
+
+// add slides to background slideshow
+const bg1Slideshow = new BackgroundSlideshow('bg1-slideshow', bg1Slides, {height: "300px", width:"250px", animationVariant: 1})
+
+// add only the background slideshow to DOM 
+const Animation1SlideshowContainer = new SlideshowContainer('animation1-slideshow-container', 'animation1-slideshow-div', bg1Slideshow)
+
+
+
+// Animation variant 2
+const bg2Slides = []
+// create the background slides
+for (let i = 0; i < imageURLs.length; i ++){
+    bg2Slides.push(new BackgroundSlide(imageURLs[i], 'nature photo', `bg2_${i}`))
+}
+
+// add slides to background slideshow
+const bg2Slideshow = new BackgroundSlideshow('bg2-slideshow', bg2Slides, {height: "300px", width:"250px", animationVariant: 2})
+
+// add only the background slideshow to DOM 
+const Animation2SlideshowContainer = new SlideshowContainer('animation2-slideshow-container', 'animation2-slideshow-div', bg2Slideshow)
+
+
+
+// -------------------------------- END ANIMATION SLIDESHOW----------------------------------
