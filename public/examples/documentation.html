@@ -116,7 +116,7 @@
                         alt
                     </td>
                     <td>
-                        the alt text of the slide image
+                        The alt text of the slide image
                     </td>
                 </tr>
                 <tr>
@@ -124,7 +124,7 @@
                         src
                     </td>
                     <td>
-                        the link to the image to use for this slide
+                        The link to the image to use for this slide
                     </td>
                 </tr>
                 <tr>
@@ -132,7 +132,7 @@
                         id
                     </td>
                     <td>
-                        the id to use for this slide, this id will also be used for the html element corresponding to this slide
+                        The id to use for this slide, this id will also be used for the html element corresponding to this slide
                     </td>
                 </tr>
             </table>
@@ -151,7 +151,7 @@
                         alt
                     </td>
                     <td>
-                        the alt text of the slide image
+                        The alt text of the slide image
                     </td>
                 </tr>
                 <tr>
@@ -159,7 +159,7 @@
                         src
                     </td>
                     <td>
-                        the link to the image to use for this slide
+                        The link to the image to use for this slide
                     </td>
                 </tr>
                 <tr>
@@ -167,7 +167,7 @@
                         id
                     </td>
                     <td>
-                        the id to use for this slide, this id will also be used for the html element corresponding to this slide
+                        The id to use for this slide, this id will also be used for the html element corresponding to this slide
                     </td>
                 </tr>
             </table>
@@ -185,7 +185,7 @@
                         text
                     </td>
                     <td>
-                        the text to use inside the slide
+                        The text to use inside the slide
                     </td>
                 </tr>
                 <tr>
@@ -193,7 +193,7 @@
                         fontSize
                     </td>
                     <td>
-                        the size of the font to use in this slide
+                        The size of the font to use in this slide
                     </td>
                 </tr>
                 <tr>
@@ -201,7 +201,7 @@
                         id
                     </td>
                     <td>
-                        the id to use for this slide, this id will also be used for the html element corresponding to this slide
+                        The id to use for this slide, this id will also be used for the html element corresponding to this slide
                     </td>
                 </tr>
             </table>
@@ -220,7 +220,7 @@
                         id
                     </td>
                     <td>
-                        the id to use for this slideshow, this id will also be used for the html element corresponding to this slideshow
+                        The id to use for this slideshow, this id will also be used for the html element corresponding to this slideshow
                     </td>
                 </tr>
                 <tr>
@@ -228,9 +228,9 @@
                         slides
                     </td>
                     <td>
-                        a list of TextSlide or ForegroundSlide instances to be added to this slideshow
+                        A list of TextSlide or ForegroundSlide instances to be added to this slideshow
                         <br>
-                        this list cannot be empty, every slideshow must contain at least one slide
+                        This list cannot be empty, every slideshow must contain at least one slide and the same slide instance cannot be a part of multiple slideshows
                     </td>
                 </tr>
                 <tr>
@@ -238,7 +238,7 @@
                         options
                     </td>
                     <td>
-                        options to style/manipulate this slideshow, see the <a href="#options">options</a> section below for more information
+                        Options to style/manipulate this slideshow, see the <a href="#options">options</a> section below for more information
                     </td>
                 </tr>
             </table>
@@ -256,7 +256,7 @@
                         id
                     </td>
                     <td>
-                        the id to use for this slideshow, this id will also be used for the html element corresponding to this slideshow
+                        The id to use for this slideshow, this id will also be used for the html element corresponding to this slideshow
                     </td>
                 </tr>
                 <tr>
@@ -264,9 +264,9 @@
                         slides
                     </td>
                     <td>
-                        a list of BackgroundSlide instances to be added to this slideshow
+                        A list of BackgroundSlide instances to be added to this slideshow
                         <br>
-                        this list cannot be empty, every slideshow must contain at least one slide
+                        This list cannot be empty, every slideshow must contain at least one slide
                         and the same slide instance cannot be a part of multiple slideshows
                     </td>
                 </tr>
@@ -275,7 +275,7 @@
                         options
                     </td>
                     <td>
-                        options to style/manipulate this slideshow, see the <a href="#options">options</a> section below for more information
+                        Options to style/manipulate this slideshow, see the <a href="#options">options</a> section below for more information
                     </td>
                 </tr>
             </table>
@@ -293,7 +293,7 @@
                         id
                     </td>
                     <td>
-                        the id to use for this slideshow container,
+                        The id to use for this slideshow container,
                         this id will also be used for the html element corresponding to this slideshow container
                     </td>
                 </tr>
@@ -302,7 +302,7 @@
                         containerID
                     </td>
                     <td>
-                        the id of the html element to append this new slideshowContainer to
+                        The id of the html element to append this new slideshow container to
                     </td>
                 </tr>
                 <tr>
@@ -381,7 +381,7 @@
                     <td class="option-td">arrowColor</td>
                     <td>string</td>
                     <td>
-                        Changes the color of the arrows in the slideshow
+                        Changes the color of the arrows in the slideshow.
                         <br>
                         if undefined, the default arrow color is black.
                     </td>
@@ -459,17 +459,17 @@
 
             <h3>.removeSlide(slide)</h3>
             Remove a slide from a slideshow, if the slide is not part of the slideshow or is the last slide in the slideshow, an error is thrown
-            <br>
-            Every slideshow must contain at least one slide
+            
+            since every slideshow must contain at least one slide
             
             <h3>.nextSlide()</h3>
             Move to the next slide in the slideshow, or the first slide if the current slide is the last
             
             <h3>.prevSlide()</h3>
-            Move to the next slide in the slideshow, or the first slide if the current slide is the last
+            Move to the previous slide in the slideshow, or the last slide if the current slide is the first
 
             <h3>.changeSlide(index)</h3>
-            Move to a i-th slide in the slideshow corresponding to the parameter 'index'throws an error if the index is out of bounds
+            Move to a i-th slide in the slideshow corresponding to the parameter 'index'. Throws an error if the index is out of bounds
 
             <h3>.randomSlide()</h3>
             Move to a random slide in the slideshow 
